@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class Database {
     String DB_PATH = "data/data/com.appsxone.notesapp/databases/";
-    String DB_NAME = "save_db.sqlite";
+    String DB_NAME = "notes_db.sqlite";
     Context activity;
     SQLiteDatabase sqLiteDatabase;
 
