@@ -39,6 +39,16 @@
                 android:autoLink="web"
                 android:text="Note Description" />
 
+            <com.nguyencse.URLEmbeddedView
+                android:id="@+id/urlEmbedView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:title="Title"
+                app:description="Description"
+                app:host="abc.com"
+                app:favor="@drawable/ic_url"
+                app:thumbnail="@drawable/ic_url"/>
+
         </LinearLayout>
 
         <LinearLayout

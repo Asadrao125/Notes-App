@@ -26,6 +26,8 @@ import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
+import com.nguyencse.URLEmbeddedData;
+import com.nguyencse.URLEmbeddedView;
 
 import java.util.ArrayList;
 
@@ -81,6 +83,22 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
                 Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
             }
         });
+
+        if (notesArrayList.get(position).note_description.contains("http")) {
+            holder.urlEmbeddedView.setVisibility(View.VISIBLE);
+            holder.urlEmbeddedView.setURL(notesArrayList.get(position).note_description, new URLEmbeddedView.OnLoadURLListener() {
+                @Override
+                public void onLoadURLCompleted(URLEmbeddedData data) {
+                    holder.urlEmbeddedView.title(data.getTitle());
+                    holder.urlEmbeddedView.description(data.getDescription());
+                    holder.urlEmbeddedView.host(data.getHost());
+                    holder.urlEmbeddedView.thumbnail(data.getThumbnailURL());
+                    holder.urlEmbeddedView.favor(data.getFavorURL());
+                }
+            });
+        } else {
+            holder.urlEmbeddedView.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -90,6 +108,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle, tvDescription;
+        URLEmbeddedView urlEmbeddedView;
         ImageView imgDelete, imgEdit, imgCopy;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -99,6 +118,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             imgDelete = itemView.findViewById(R.id.imgDelete);
             tvDescription = itemView.findViewById(R.id.tvDescription);
             imgCopy = itemView.findViewById(R.id.imgCopy);
+            urlEmbeddedView = itemView.findViewById(R.id.urlEmbedView);
         }
     }
 
