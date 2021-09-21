@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteException;
 import android.widget.Toast;
 
 import com.appsxone.notesapp.model.Categories;
+import com.appsxone.notesapp.model.Notes;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -107,19 +108,18 @@ public class Database {
         sqLiteDatabase.close();
     }
 
-    //============================start custom methods / Crud for category table ====================================
+    //============================ START CUSTOM METHODS / CRUD FOR CATEGORIES TABLE ====================================
 
-  /*
+    /*
     CREATE TABLE "categories" (
 	"category_name"	TEXT,
 	"category_id"	INTEGER,
 	"date"	TEXT,
 	"time"	TEXT,
 	PRIMARY KEY("category_id" AUTOINCREMENT));
-  */
+    */
 
-    public long saveCategory(Categories categories
-    ) {
+    public long saveCategory(Categories categories) {
         long rowId = -1;
         try {
             open();
@@ -167,8 +167,111 @@ public class Database {
 
     public void deleteCategory(int id) {
         open();
-        String query = "delete from categories WHERE id = '" + id + "'";
+        String query = "delete from categories WHERE category_id = '" + id + "'";
         sqLiteDatabase.execSQL(query);
+        close();
+    }
+
+    public void updateCategory(Categories categories, int id) {
+        open();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("category_name", categories.category_name);
+        dataToUpdate.put("date", categories.date);
+        dataToUpdate.put("time", categories.time);
+        String where = "category_id" + "=" + "'" + id + "'";
+        try {
+            int rows = sqLiteDatabase.update("categories", dataToUpdate, where, null);
+            System.out.println("-- rows updated: " + rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        close();
+    }
+
+    //============================ START CUSTOM METHODS / CRUD FOR Notes TABLE ====================================
+
+    /*
+    * CREATE TABLE "notes" (
+	"note_id"	INTEGER,
+	"category_id"	INTEGER,
+	"note_title"	TEXT,
+	"note_description"	TEXT,
+	"date"	TEXT,
+	"time"	TEXT,
+	PRIMARY KEY("note_id" AUTOINCREMENT));
+    */
+
+    public long saveNote(Notes notes) {
+        long rowId = -1;
+        try {
+            open();
+            ContentValues cv = new ContentValues();
+            cv.put("category_name", notes.category_id);
+            cv.put("note_title", notes.note_title);
+            cv.put("note_description", notes.note_description);
+            cv.put("date", notes.date);
+            cv.put("time", notes.time);
+            rowId = sqLiteDatabase.insert("notes", null, cv);
+            close();
+        } catch (SQLiteException e) {
+            Toast.makeText(activity, "Database exception", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+        System.out.println("-- Record inserted rowId : " + rowId);
+        return rowId;
+    }
+
+    public ArrayList<Notes> getAllNotes() {
+        open();
+        ArrayList<Notes> categoryBeans = new ArrayList<>();
+        Notes temp;
+        String query = "select * from notes";
+
+        System.out.println("--query in getAllAttendance : " + query);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int note_id = cursor.getInt(cursor.getColumnIndex("note_id"));
+                int category_id = cursor.getInt(cursor.getColumnIndex("category_id"));
+                String note_title = cursor.getString(cursor.getColumnIndex("note_title"));
+                String note_description = cursor.getString(cursor.getColumnIndex("note_description"));
+                String date = cursor.getString(cursor.getColumnIndex("date"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                temp = new Notes(note_id, category_id, note_title, note_description, date, time);
+                categoryBeans.add(temp);
+                temp = null;
+            }
+            while (cursor.moveToNext());
+            close();
+            return categoryBeans;
+        }
+        close();
+        return null;
+    }
+
+    public void deleteNote(int id) {
+        open();
+        String query = "delete from categories WHERE note_id = '" + id + "'";
+        sqLiteDatabase.execSQL(query);
+        close();
+    }
+
+    public void updateNote(Notes categories, int id) {
+        open();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("note_title", categories.note_title);
+        dataToUpdate.put("note_description", categories.note_title);
+        dataToUpdate.put("date", categories.date);
+        dataToUpdate.put("time", categories.time);
+        String where = "category_id" + "=" + "'" + id + "'";
+        try {
+            int rows = sqLiteDatabase.update("notes", dataToUpdate, where, null);
+            System.out.println("-- rows updated: " + rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         close();
     }
 

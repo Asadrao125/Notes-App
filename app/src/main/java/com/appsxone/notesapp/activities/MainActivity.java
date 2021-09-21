@@ -1,8 +1,10 @@
-package com.appsxone.notesapp;
+package com.appsxone.notesapp.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.appsxone.notesapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
