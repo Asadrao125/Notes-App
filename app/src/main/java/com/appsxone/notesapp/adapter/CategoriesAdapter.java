@@ -78,6 +78,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 context.startActivity(intent);
             }
         });
+
+        if (database.getAllNotes(categoriesArrayList.get(position).category_id) != null) {
+            holder.tvNotesSize.setText(database.getAllNotes(categoriesArrayList.get(position).category_id).size() + " Notes");
+        }
+
     }
 
     @Override
@@ -86,7 +91,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView, tvCategoryName;
+        TextView textView, tvCategoryName, tvNotesSize;
         ImageView imgEdit, imgDelete;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -95,6 +100,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             tvCategoryName = itemView.findViewById(R.id.tvCategoryName);
             imgEdit = itemView.findViewById(R.id.imgEdit);
             imgDelete = itemView.findViewById(R.id.imgDelete);
+            tvNotesSize = itemView.findViewById(R.id.tvNotesSize);
         }
     }
 
@@ -127,7 +133,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
                     database.updateCategory(new Categories(edtCategory.getText().toString().trim(), id, date, time), id);
-                    Toast.makeText(context, "Category Updated", Toast.LENGTH_SHORT).show();
                     alertDialog.dismiss();
                     context.startActivity(new Intent(context, HomeActivity.class));
                     ((Activity) context).finish();

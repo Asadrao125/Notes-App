@@ -18,13 +18,31 @@
             app:cardElevation="8dp"
             app:cardMaxElevation="8dp">
 
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="15dp"
-                android:text="Categories"
-                android:textColor="@color/purple_500"
-                android:textSize="16sp" />
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/imgFilter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/ripple_effect"
+                    android:padding="15dp"
+                    android:src="@drawable/ic_filter"
+                    app:tint="@color/sky_blue" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="15dp"
+                    android:text="Categories"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="16sp" />
+
+            </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -33,6 +51,24 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:listitem="@layout/item_categories" />
+
+        <LinearLayout
+            android:id="@+id/noDataLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Categories To Show"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -44,7 +80,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
         android:layout_margin="20dp"
-        android:backgroundTint="@color/purple_200"
+        android:backgroundTint="@color/sky_blue"
         android:src="@drawable/ic_add"
         app:maxImageSize="35dp"
         app:tint="@color/white" />

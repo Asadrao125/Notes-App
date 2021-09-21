@@ -26,79 +26,45 @@
                     android:id="@+id/imgBack"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_effect"
                     android:padding="15dp"
                     android:src="@drawable/ic_back"
-                    app:tint="@color/purple_500" />
+                    app:tint="@color/sky_blue" />
 
                 <TextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/tvTitle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_toEndOf="@id/imgBack"
                     android:layout_toRightOf="@id/imgBack"
-                    android:text="New Note"
-                    android:textColor="@color/purple_500"
+                    android:text="Notes"
+                    android:textColor="@color/sky_blue"
                     android:textSize="16sp" />
 
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNotes"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp">
-
-            <EditText
-                android:id="@+id/edtNoteTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:hint="Note Title"
-                android:inputType="textPersonName" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="20dp">
-
-            <EditText
-                android:id="@+id/edtNoteDecription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawablePadding="10dp"
-                android:hint="Note Description"
-                android:inputType="textPersonName" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvBtnSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="10dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="4dp"
-            app:cardUseCompatPadding="true">
-
-            <Button
-                android:id="@+id/btnAddNote"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/btn_background"
-                android:text="Add Note"
-                android:textColor="@color/white" />
-
-        </androidx.cardview.widget.CardView>
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_notes" />
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddNote"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/purple_200"
+        android:src="@drawable/ic_add"
+        app:maxImageSize="35dp"
+        app:tint="@color/white" />
 
 </RelativeLayout>

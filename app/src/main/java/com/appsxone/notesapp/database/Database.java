@@ -144,7 +144,7 @@ public class Database {
         Categories temp;
         String query = "select * from categories";
 
-        System.out.println("--query in getAllAttendance : " + query);
+        System.out.println("--query in getAllCategories : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
@@ -154,6 +154,61 @@ public class Database {
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String time = cursor.getString(cursor.getColumnIndex("time"));
                 temp = new Categories(category_name, category_id, date, time);
+                categoryBeans.add(temp);
+                temp = null;
+            }
+            while (cursor.moveToNext());
+            close();
+            return categoryBeans;
+        }
+        close();
+        return null;
+    }
+
+    public ArrayList<Categories> getAllDailyCategories(String date) {
+        open();
+        ArrayList<Categories> categoryBeans = new ArrayList<>();
+        Categories temp;
+        String query = "select * from categories WHERE date = '" + date + "'";
+
+        System.out.println("--query in getAllDailyCategories : " + query);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int category_id = cursor.getInt(cursor.getColumnIndex("category_id"));
+                String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
+                String date1 = cursor.getString(cursor.getColumnIndex("date"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                temp = new Categories(category_name, category_id, date1, time);
+                categoryBeans.add(temp);
+                temp = null;
+            }
+            while (cursor.moveToNext());
+            close();
+            return categoryBeans;
+        }
+        close();
+        return null;
+    }
+
+    public ArrayList<Categories> getAllWeeklyMonthlyYearlyNotes(String startDate, String endDate) {
+        open();
+        ArrayList<Categories> categoryBeans = new ArrayList<>();
+        Categories temp;
+
+        String query = "SELECT * FROM categories WHERE date BETWEEN '" + endDate + "' AND '" + startDate + "'";
+
+        System.out.println("--query in getAllWeeklyMonthlyYearlyNotes : " + query);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int category_id = cursor.getInt(cursor.getColumnIndex("category_id"));
+                String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
+                String date1 = cursor.getString(cursor.getColumnIndex("date"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                temp = new Categories(category_name, category_id, date1, time);
                 categoryBeans.add(temp);
                 temp = null;
             }
@@ -206,7 +261,7 @@ public class Database {
         try {
             open();
             ContentValues cv = new ContentValues();
-            cv.put("category_name", notes.category_id);
+            cv.put("category_id", notes.category_id);
             cv.put("note_title", notes.note_title);
             cv.put("note_description", notes.note_description);
             cv.put("date", notes.date);
@@ -222,11 +277,11 @@ public class Database {
         return rowId;
     }
 
-    public ArrayList<Notes> getAllNotes() {
+    public ArrayList<Notes> getAllNotes(int categoryId) {
         open();
         ArrayList<Notes> categoryBeans = new ArrayList<>();
         Notes temp;
-        String query = "select * from notes";
+        String query = "select * from notes WHERE category_id = '" + categoryId + "'";
 
         System.out.println("--query in getAllAttendance : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -253,19 +308,20 @@ public class Database {
 
     public void deleteNote(int id) {
         open();
-        String query = "delete from categories WHERE note_id = '" + id + "'";
+        String query = "delete from notes WHERE note_id = '" + id + "'";
         sqLiteDatabase.execSQL(query);
         close();
     }
 
-    public void updateNote(Notes categories, int id) {
+    public void updateNote(Notes notes, int id) {
         open();
         ContentValues dataToUpdate = new ContentValues();
-        dataToUpdate.put("note_title", categories.note_title);
-        dataToUpdate.put("note_description", categories.note_title);
-        dataToUpdate.put("date", categories.date);
-        dataToUpdate.put("time", categories.time);
-        String where = "category_id" + "=" + "'" + id + "'";
+        dataToUpdate.put("note_title", notes.note_title);
+        dataToUpdate.put("note_description", notes.note_description);
+        dataToUpdate.put("category_id", notes.category_id);
+        dataToUpdate.put("date", notes.date);
+        dataToUpdate.put("time", notes.time);
+        String where = "note_id" + "=" + "'" + id + "'";
         try {
             int rows = sqLiteDatabase.update("notes", dataToUpdate, where, null);
             System.out.println("-- rows updated: " + rows);
@@ -274,5 +330,4 @@ public class Database {
         }
         close();
     }
-
 }
