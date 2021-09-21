@@ -36,6 +36,7 @@
                 android:layout_marginBottom="10dp"
                 android:ellipsize="end"
                 android:maxLines="2"
+                android:autoLink="web"
                 android:text="Note Description" />
 
         </LinearLayout>
