@@ -102,6 +102,14 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         } else {
             holder.urlEmbeddedView.setVisibility(View.GONE);
         }
+
+        holder.tvDescription.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                descriptionDialog(notesArrayList.get(position).note_description);
+            }
+        });
+
     }
 
     @Override
@@ -195,4 +203,20 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
+
+    public void descriptionDialog(String descriptio) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage(descriptio);
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton("Close", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 }

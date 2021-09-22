@@ -69,6 +69,18 @@ public class HomeActivity extends AppCompatActivity {
                 showFilterDialog();
             }
         });
+
+        rvCategories.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    fabAddCategory.hide();
+                } else {
+                    fabAddCategory.show();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
     }
 
     private void showFilterDialog() {

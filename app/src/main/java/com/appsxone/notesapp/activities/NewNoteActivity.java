@@ -73,6 +73,19 @@ public class NewNoteActivity extends AppCompatActivity {
                 addCategoryDialog();
             }
         });
+
+        rvNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                if (dy > 0) {
+                    fabAddNote.hide();
+                } else {
+                    fabAddNote.show();
+                }
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+
     }
 
     private void setAdapter() {
