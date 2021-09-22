@@ -20,6 +20,7 @@ import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
+import com.appsxone.notesapp.model.Notes;
 
 import java.util.ArrayList;
 
@@ -78,8 +79,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
 
-        if (database.getAllNotes(categoriesArrayList.get(position).category_id) != null) {
-            holder.tvNotesSize.setText(database.getAllNotes(categoriesArrayList.get(position).category_id).size() + " Notes");
+        ArrayList<Notes> notesArrayList = database.getAllNotes(categoriesArrayList.get(position).category_id);
+        if (notesArrayList != null) {
+            int size = notesArrayList.size();
+            if (size > 1) {
+                holder.tvNotesSize.setText(size + " Notes");
+            } else if (size == 1) {
+                holder.tvNotesSize.setText(size + " Note");
+            }
         }
     }
 
