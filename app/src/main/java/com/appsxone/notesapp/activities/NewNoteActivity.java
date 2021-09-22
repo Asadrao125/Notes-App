@@ -20,15 +20,11 @@ import android.widget.Toast;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.adapter.NotesAdapter;
 import com.appsxone.notesapp.database.Database;
-import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.utils.DateFunctions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class NewNoteActivity extends AppCompatActivity {
     String name;

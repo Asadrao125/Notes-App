@@ -28,11 +28,7 @@ import com.appsxone.notesapp.utils.DateFunctions;
 import com.appsxone.notesapp.utils.SharedPref;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class HomeActivity extends AppCompatActivity {
     Database database;

@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.appsxone.notesapp.activities.HomeActivity;
 import com.appsxone.notesapp.R;
