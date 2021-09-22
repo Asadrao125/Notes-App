@@ -73,6 +73,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 Intent intent = new Intent(context, NewNoteActivity.class);
                 intent.putExtra("name", categoriesArrayList.get(position).category_name);
                 intent.putExtra("id", categoriesArrayList.get(position).category_id);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(intent);
             }
         });
@@ -80,7 +81,6 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         if (database.getAllNotes(categoriesArrayList.get(position).category_id) != null) {
             holder.tvNotesSize.setText(database.getAllNotes(categoriesArrayList.get(position).category_id).size() + " Notes");
         }
-
     }
 
     @Override

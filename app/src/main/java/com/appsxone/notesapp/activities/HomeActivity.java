@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,9 +37,11 @@ import java.util.Date;
 public class HomeActivity extends AppCompatActivity {
     Database database;
     ImageView imgFilter;
+    EditText edtSearch;
     LinearLayout noDataLayout;
     RecyclerView rvCategories;
     FloatingActionButton fabAddCategory;
+    ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         noDataLayout = findViewById(R.id.noDataLayout);
         imgFilter = findViewById(R.id.imgFilter);
         SharedPref.init(this);
+        edtSearch = findViewById(R.id.edtSearch);
 
         fabAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +69,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        setDapter(database.getAllCategories());
+        setDapter();
 
         imgFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,6 +89,32 @@ public class HomeActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
+
+        edtSearch.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int i, int i1, int i2) {
+                final String query = s.toString().toLowerCase().trim();
+                final ArrayList<Categories> filteredList = new ArrayList<>();
+                for (int k = 0; k < categoriesArrayList.size(); k++) {
+                    final String text = categoriesArrayList.get(k).category_name.toLowerCase();
+                    if (text.contains(query)) {
+                        filteredList.add(categoriesArrayList.get(k));
+                    }
+                }
+                rvCategories.setAdapter(new CategoriesAdapter(getApplicationContext(), filteredList));
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
     }
 
     private void showFilterDialog() {
@@ -120,32 +151,20 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (rbAllTime.isChecked()) {
-
                     SharedPref.write("key", "A");
-
-                    setDapter(database.getAllCategories());
+                    setDapter();
                 } else if (rbDaily.isChecked()) {
-
                     SharedPref.write("key", "D");
-
-                    setDapter(database.getAllDailyCategories(DateFunctions.getCurrentDate()));
+                    setDapter();
                 } else if (rbWeekly.isChecked()) {
-
                     SharedPref.write("key", "W");
-
-                    setDapter(database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                            DateFunctions.getCalculatedDate("", -7)));
-
+                    setDapter();
                 } else if (rbMonthly.isChecked()) {
-
-                    setDapter(database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                            DateFunctions.getCalculatedDate("", -30)));
-
+                    SharedPref.write("key", "M");
+                    setDapter();
                 } else if (rbYearly.isChecked()) {
-
-                    setDapter(database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                            DateFunctions.getCalculatedDate("", -365)));
-
+                    SharedPref.write("key", "Y");
+                    setDapter();
                 }
                 alertDialog.dismiss();
             }
@@ -155,7 +174,24 @@ public class HomeActivity extends AppCompatActivity {
         alertDialog.show();
     }
 
-    private void setDapter(ArrayList<Categories> categoriesArrayList) {
+    private void setDapter() {
+        if (SharedPref.read("key", "").equals("A")) {
+            categoriesArrayList = database.getAllCategories();
+        } else if (SharedPref.read("key", "").equals("D")) {
+            categoriesArrayList = database.getAllDailyCategories(DateFunctions.getCurrentDate());
+        } else if (SharedPref.read("key", "").equals("W")) {
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -7));
+        } else if (SharedPref.read("key", "").equals("M")) {
+            database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -30));
+        } else if (SharedPref.read("key", "").equals("Y")) {
+            database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -365));
+        } else {
+            categoriesArrayList = database.getAllCategories();
+        }
+
         if (categoriesArrayList != null) {
             rvCategories.setAdapter(new CategoriesAdapter(this, categoriesArrayList));
             rvCategories.setVisibility(View.VISIBLE);
@@ -172,7 +208,7 @@ public class HomeActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_category, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtCategory = dialogView.findViewById(R.id.edtCategory);
         Button btnSave = dialogView.findViewById(R.id.btnSave);
@@ -191,7 +227,7 @@ public class HomeActivity extends AppCompatActivity {
                 if (!category.isEmpty()) {
                     long status = database.saveCategory(new Categories(category, 0, DateFunctions.getCurrentDate(), DateFunctions.getCurrentTime()));
                     if (status != -1) {
-                        setDapter(database.getAllCategories());
+                        setDapter();
                         alertDialog.dismiss();
                     } else {
                         Toast.makeText(HomeActivity.this, "Failed to add category", Toast.LENGTH_SHORT).show();
@@ -210,6 +246,6 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setDapter(database.getAllCategories());
+        setDapter();
     }
 }
