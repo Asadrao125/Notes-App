@@ -23,6 +23,7 @@ import com.appsxone.notesapp.adapter.CategoriesAdapter;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.utils.DateFunctions;
+import com.appsxone.notesapp.utils.SharedPref;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.ParseException;
@@ -54,6 +55,7 @@ public class HomeActivity extends AppCompatActivity {
         rvCategories.setHasFixedSize(true);
         noDataLayout = findViewById(R.id.noDataLayout);
         imgFilter = findViewById(R.id.imgFilter);
+        SharedPref.init(this);
 
         fabAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +63,7 @@ public class HomeActivity extends AppCompatActivity {
                 addCategoryDialog();
             }
         });
+
         setDapter(database.getAllCategories());
 
         imgFilter.setOnClickListener(new View.OnClickListener() {
@@ -105,14 +108,30 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        if (SharedPref.read("key", "").equals("A")) {
+            rbAllTime.setChecked(true);
+        } else if (SharedPref.read("key", "").equals("D")) {
+            rbDaily.setChecked(true);
+        } else if (SharedPref.read("key", "").equals("W")) {
+            rbWeekly.setChecked(true);
+        }
+
         btnApplyFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (rbAllTime.isChecked()) {
+
+                    SharedPref.write("key", "A");
+
                     setDapter(database.getAllCategories());
                 } else if (rbDaily.isChecked()) {
+
+                    SharedPref.write("key", "D");
+
                     setDapter(database.getAllDailyCategories(DateFunctions.getCurrentDate()));
                 } else if (rbWeekly.isChecked()) {
+
+                    SharedPref.write("key", "W");
 
                     setDapter(database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
                             DateFunctions.getCalculatedDate("", -7)));
