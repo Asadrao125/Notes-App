@@ -197,7 +197,8 @@ public class Database {
         ArrayList<Categories> categoryBeans = new ArrayList<>();
         Categories temp;
 
-        String query = "SELECT * FROM categories WHERE date BETWEEN '" + endDate + "' AND '" + startDate + "'";
+        //String query = "SELECT * FROM categories WHERE date BETWEEN '" + endDate + "' AND '" + startDate + "'";
+        String query = "SELECT * FROM categories WHERE date >= '" + endDate + "' AND date <= '" + startDate + "'";
 
         System.out.println("--query in getAllWeeklyMonthlyYearlyNotes : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);

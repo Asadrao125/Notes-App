@@ -144,6 +144,10 @@ public class HomeActivity extends AppCompatActivity {
             rbDaily.setChecked(true);
         } else if (SharedPref.read("key", "").equals("W")) {
             rbWeekly.setChecked(true);
+        } else if (SharedPref.read("key", "").equals("M")) {
+            rbMonthly.setChecked(true);
+        } else if (SharedPref.read("key", "").equals("Y")) {
+            rbYearly.setChecked(true);
         }
 
         btnApplyFilter.setOnClickListener(new View.OnClickListener() {
@@ -183,10 +187,10 @@ public class HomeActivity extends AppCompatActivity {
                     DateFunctions.getCalculatedDate("", -7));
         } else if (SharedPref.read("key", "").equals("M")) {
             database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -30));
+                    DateFunctions.getCalculatedDate("", -25));
         } else if (SharedPref.read("key", "").equals("Y")) {
             database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -365));
+                    DateFunctions.getCalculatedDate("", -300));
         } else {
             categoriesArrayList = database.getAllCategories();
         }
