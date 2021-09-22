@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Notes App</string>
+
+    <string name="about">This is a simple application to manage your notes in a best way.
+    It saves notes on the basis of categories, means you can manage each category\'s notes seperatly.
+    This app is complete OFFLINE, NO LOGIN and SIGNUP required, just install and start using.
+    It has FILTER option through which you can filter all categories by All Time, Daily, and Weekly.
+    You can REVERSE the list, means last entered category will be on top by applying this option.</string>
 </resources>

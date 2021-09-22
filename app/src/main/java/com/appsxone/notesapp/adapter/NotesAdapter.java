@@ -83,9 +83,9 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         String hour = dates[0].trim();
         int h = Integer.parseInt(hour);
         if (h > 12) {
-            holder.tvTime.setText(notesArrayList.get(position).time + " pm");
+            holder.tvTime.setText(notesArrayList.get(position).date + " " + notesArrayList.get(position).time + " pm");
         } else {
-            holder.tvTime.setText(notesArrayList.get(position).time + " am");
+            holder.tvTime.setText(notesArrayList.get(position).date + " " + notesArrayList.get(position).time + " am");
         }
 
         if (InternetConnection.isNetworkConnected((Activity) context)) {

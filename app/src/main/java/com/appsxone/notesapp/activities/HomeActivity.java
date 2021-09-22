@@ -5,18 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -33,10 +39,12 @@ import java.util.ArrayList;
 public class HomeActivity extends AppCompatActivity {
     Database database;
     EditText edtSearch;
-    ImageView imgFilter;
+    CheckBox cbReverse;
     LinearLayout noDataLayout;
     RecyclerView rvCategories;
+    ImageView imgFilter, imgMore;
     FloatingActionButton fabAddCategory;
+    LinearLayoutManager linearLayoutManager;
     ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
     @Override
@@ -46,11 +54,36 @@ public class HomeActivity extends AppCompatActivity {
 
         database = new Database(this);
         database.createDatabase();
+        SharedPref.init(getApplicationContext());
         fabAddCategory = findViewById(R.id.fabAddCategory);
+        cbReverse = findViewById(R.id.cbReverse);
         rvCategories = findViewById(R.id.rvCategories);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setReverseLayout(true);
-        linearLayoutManager.setStackFromEnd(true);
+        linearLayoutManager = new LinearLayoutManager(this);
+        imgMore = findViewById(R.id.imgMore);
+
+        if (SharedPref.read("reverse", "").equals("true")) {
+            cbReverse.setChecked(true);
+            setLayoutManager(true);
+        } else {
+            cbReverse.setChecked(false);
+            setLayoutManager(false);
+        }
+
+        cbReverse.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    SharedPref.write("reverse", "true");
+                    setLayoutManager(true);
+                    setDapter();
+                } else {
+                    SharedPref.write("reverse", "false");
+                    setLayoutManager(false);
+                    setDapter();
+                }
+            }
+        });
+
         rvCategories.setLayoutManager(linearLayoutManager);
         rvCategories.setHasFixedSize(true);
         noDataLayout = findViewById(R.id.noDataLayout);
@@ -110,6 +143,41 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         });
+
+        imgMore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup();
+            }
+        });
+    }
+
+    private void popup() {
+        PopupMenu popup = new PopupMenu(getApplicationContext(), imgMore);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.btnAbout:
+                        showAboutDialog();
+                        return true;
+                    case R.id.btnRate:
+                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                        return true;
+                    case R.id.btnFeedback:
+                        Toast.makeText(HomeActivity.this, "Under Development", Toast.LENGTH_SHORT).show();
+                        return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.home_menu);
+        popup.show();
+    }
+
+    private void setLayoutManager(boolean check) {
+        linearLayoutManager.setReverseLayout(check);
+        linearLayoutManager.setStackFromEnd(check);
     }
 
     private void showFilterDialog() {
@@ -233,6 +301,34 @@ public class HomeActivity extends AppCompatActivity {
                     edtCategory.setError("Required");
                     edtCategory.requestFocus();
                 }
+            }
+        });
+
+        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        alertDialog.show();
+    }
+
+    public void showAboutDialog() {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = this.getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.dialog_about, null);
+        dialogBuilder.setView(dialogView);
+        AlertDialog alertDialog = dialogBuilder.create();
+
+        ImageView imgClose = dialogView.findViewById(R.id.imgClose);
+        Button btnClose = dialogView.findViewById(R.id.btnClose);
+
+        imgClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.dismiss();
+            }
+        });
+
+        btnClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                alertDialog.dismiss();
             }
         });
 

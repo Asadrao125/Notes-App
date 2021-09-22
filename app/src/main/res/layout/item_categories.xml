@@ -79,7 +79,8 @@
                 android:id="@+id/tvNotesSize"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="0 Note" />
+                android:text="0 Note"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvTime"
