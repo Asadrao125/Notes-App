@@ -11,41 +11,31 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="wrap_content"
+        android:background="@drawable/ripple_effect">
 
-        <LinearLayout
-            android:id="@+id/editLayout"
+        <ImageView
+            android:id="@+id/imgEdit"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:background="@color/sky_blue">
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ripple_effect"
+            android:padding="5dp"
+            android:src="@drawable/ic_edit"
+            app:tint="@color/sky_blue" />
 
-            <ImageView
-                android:id="@+id/imgEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/ripple_effect"
-                android:padding="5dp"
-                android:src="@drawable/ic_edit" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/del_ley"
+        <ImageView
+            android:id="@+id/imgDelete"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_toLeftOf="@id/editLayout"
-            android:background="@drawable/red_shape">
-
-            <ImageView
-                android:id="@+id/imgDelete"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:background="@drawable/ripple_effect"
-                android:padding="5dp"
-                android:src="@drawable/ic_delete" />
-
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/imgEdit"
+            android:background="@drawable/ripple_effect"
+            android:padding="5dp"
+            android:src="@drawable/ic_delete"
+            app:tint="@android:color/holo_red_dark" />
 
         <RelativeLayout
             android:id="@+id/circleLayout"
@@ -72,8 +62,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_toStartOf="@+id/del_ley"
-            android:layout_toLeftOf="@+id/editLayout"
+            android:layout_toStartOf="@+id/imgDelete"
+            android:layout_toLeftOf="@+id/imgEdit"
             android:layout_toEndOf="@id/circleLayout"
             android:layout_toRightOf="@id/circleLayout"
             android:orientation="vertical">

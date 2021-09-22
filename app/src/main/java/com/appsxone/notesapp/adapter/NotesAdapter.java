@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +27,7 @@ import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
+import com.appsxone.notesapp.utils.InternetConnection;
 import com.nguyencse.URLEmbeddedData;
 import com.nguyencse.URLEmbeddedView;
 
@@ -67,10 +69,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.deleteNote(notesArrayList.get(position).note_id);
-                notesArrayList.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, notesArrayList.size());
+                confirmationDiaog(notesArrayList.get(position).note_id, position, notesArrayList.get(position).note_title);
             }
         });
 
@@ -84,18 +83,22 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             }
         });
 
-        if (notesArrayList.get(position).note_description.contains("http")) {
-            holder.urlEmbeddedView.setVisibility(View.VISIBLE);
-            holder.urlEmbeddedView.setURL(notesArrayList.get(position).note_description, new URLEmbeddedView.OnLoadURLListener() {
-                @Override
-                public void onLoadURLCompleted(URLEmbeddedData data) {
-                    holder.urlEmbeddedView.title(data.getTitle());
-                    holder.urlEmbeddedView.description(data.getDescription());
-                    holder.urlEmbeddedView.host(data.getHost());
-                    holder.urlEmbeddedView.thumbnail(data.getThumbnailURL());
-                    holder.urlEmbeddedView.favor(data.getFavorURL());
-                }
-            });
+        if (InternetConnection.isNetworkConnected((Activity) context)) {
+            if (notesArrayList.get(position).note_description.contains("http")) {
+                holder.urlEmbeddedView.setVisibility(View.VISIBLE);
+                holder.urlEmbeddedView.setURL(notesArrayList.get(position).note_description, new URLEmbeddedView.OnLoadURLListener() {
+                    @Override
+                    public void onLoadURLCompleted(URLEmbeddedData data) {
+                        holder.urlEmbeddedView.title(data.getTitle());
+                        holder.urlEmbeddedView.description(data.getDescription());
+                        holder.urlEmbeddedView.host(data.getHost());
+                        holder.urlEmbeddedView.thumbnail(data.getThumbnailURL());
+                        holder.urlEmbeddedView.favor(data.getFavorURL());
+                    }
+                });
+            } else {
+                holder.urlEmbeddedView.setVisibility(View.GONE);
+            }
         } else {
             holder.urlEmbeddedView.setVisibility(View.GONE);
         }
@@ -127,9 +130,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_note, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-
-        alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
+        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtNoteTitle = dialogView.findViewById(R.id.edtNoteTitle);
         EditText edtNoteDecription = dialogView.findViewById(R.id.edtNoteDecription);
@@ -170,5 +171,28 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
 
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
+    }
+
+    public void confirmationDiaog(int noteId, int pos, String note_title) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("Are you sure you want to delete " + note_title + " ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                database.deleteNote(noteId);
+                notesArrayList.remove(pos);
+                notifyItemRemoved(pos);
+                notifyItemRangeChanged(pos, notesArrayList.size());
+                dialog.cancel();
+            }
+        });
+        builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
     }
 }

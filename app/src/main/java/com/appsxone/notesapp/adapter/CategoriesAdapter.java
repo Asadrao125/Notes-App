@@ -2,6 +2,7 @@ package com.appsxone.notesapp.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -62,10 +63,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                database.deleteCategory(categoriesArrayList.get(position).category_id);
-                categoriesArrayList.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeChanged(position, categoriesArrayList.size());
+                confirmationDiaog(categoriesArrayList.get(position).category_id, position, categoriesArrayList.get(position).category_name);
             }
         });
 
@@ -109,9 +107,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_category, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-
-        alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
+        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtCategory = dialogView.findViewById(R.id.edtCategory);
         Button btnSave = dialogView.findViewById(R.id.btnSave);
@@ -146,4 +142,27 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }
+
+    public void confirmationDiaog(int categoryId, int pos, String categoryTitle) {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+        builder1.setMessage("Are you sure you want to delete " + categoryTitle + " ?");
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                database.deleteCategory(categoryId);
+                categoriesArrayList.remove(pos);
+                notifyItemRemoved(pos);
+                notifyItemRangeChanged(pos, categoriesArrayList.size());
+            }
+        });
+        builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+    }
+
 }

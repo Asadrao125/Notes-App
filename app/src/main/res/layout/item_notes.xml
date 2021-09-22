@@ -34,20 +34,20 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginBottom="10dp"
+                android:autoLink="web"
                 android:ellipsize="end"
                 android:maxLines="2"
-                android:autoLink="web"
                 android:text="Note Description" />
 
             <com.nguyencse.URLEmbeddedView
                 android:id="@+id/urlEmbedView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="Title"
                 app:description="Description"
-                app:host="abc.com"
                 app:favor="@drawable/ic_url"
-                app:thumbnail="@drawable/ic_url"/>
+                app:host="abc.com"
+                app:thumbnail="@drawable/ic_url"
+                app:title="Title" />
 
         </LinearLayout>
 
@@ -63,14 +63,14 @@
                 android:layout_weight="1"
                 android:background="#71c5e7"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="3dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imgDelete"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ripple_effect"
+                    android:padding="3dp"
                     android:src="@drawable/ic_delete" />
 
             </LinearLayout>
@@ -81,14 +81,14 @@
                 android:layout_weight="1"
                 android:background="#5bbce4"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="3dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imgCopy"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ripple_effect"
+                    android:padding="3dp"
                     android:src="@drawable/ic_copy" />
 
             </LinearLayout>
@@ -99,14 +99,14 @@
                 android:layout_weight="1"
                 android:background="#45b3e0"
                 android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="3dp">
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/imgEdit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/ripple_effect"
+                    android:padding="3dp"
                     android:src="@drawable/ic_edit" />
 
             </LinearLayout>

@@ -35,6 +35,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"
+                android:background="@drawable/ripple_effect"
                 android:padding="10dp"
                 android:src="@drawable/ic_close" />
 
@@ -43,7 +44,9 @@
         <RadioGroup
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
             <RadioButton
@@ -84,20 +87,24 @@
                 android:id="@+id/rbMonthly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Monthly" />
+                android:text="Monthly"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
+                android:visibility="gone"
                 android:background="@color/sky_blue" />
 
             <RadioButton
                 android:id="@+id/rbYearly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yearly" />
+                android:text="Yearly"
+                android:visibility="gone" />
 
             <View
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/sky_blue" />

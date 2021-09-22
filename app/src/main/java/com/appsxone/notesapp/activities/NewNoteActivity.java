@@ -88,9 +88,7 @@ public class NewNoteActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_note, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-
-        alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
+        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtNoteTitle = dialogView.findViewById(R.id.edtNoteTitle);
         EditText edtNoteDecription = dialogView.findViewById(R.id.edtNoteDecription);

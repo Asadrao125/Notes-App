@@ -37,7 +37,6 @@ public class HomeActivity extends AppCompatActivity {
     LinearLayout noDataLayout;
     RecyclerView rvCategories;
     FloatingActionButton fabAddCategory;
-    ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +77,7 @@ public class HomeActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.diaog_filter, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-
         //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         Button btnApplyFilter = dialogView.findViewById(R.id.btnApplyFilter);
         RadioButton rbAllTime = dialogView.findViewById(R.id.rbAllTime);
@@ -144,9 +141,7 @@ public class HomeActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_category, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-
-        alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
-
+        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtCategory = dialogView.findViewById(R.id.edtCategory);
         Button btnSave = dialogView.findViewById(R.id.btnSave);
