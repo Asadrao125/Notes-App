@@ -88,7 +88,7 @@ public class NewNoteActivity extends AppCompatActivity {
 
     }
 
-    private void setAdapter() {
+    public void setAdapter() {
         notesArrayList = database.getAllNotes(categoryId);
         if (notesArrayList != null) {
             rvNotes.setAdapter(new NotesAdapter(this, notesArrayList));

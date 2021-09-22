@@ -56,7 +56,6 @@
                     android:id="@+id/edtNoteTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
                     android:hint="Note Title"
                     android:inputType="textPersonName" />
 
@@ -75,9 +74,8 @@
                     android:id="@+id/edtNoteDecription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:drawablePadding="10dp"
                     android:hint="Note Description"
-                    android:inputType="textPersonName" />
+                    android:maxLines="3" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -128,7 +128,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             public void onClick(View v) {
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
-                    database.updateCategory(new Categories(edtCategory.getText().toString().trim(), id, date, time), id);
+                    database.updateCategory(new Categories(category, id, date, time), id);
                     alertDialog.dismiss();
                     context.startActivity(new Intent(context, HomeActivity.class));
                     ((Activity) context).finish();

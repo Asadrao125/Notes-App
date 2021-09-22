@@ -62,7 +62,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             public void onClick(View v) {
                 editCategoryDialog(notesArrayList.get(position).note_id, notesArrayList.get(position).note_title,
                         notesArrayList.get(position).note_description, notesArrayList.get(position).date,
-                        notesArrayList.get(position).time, notesArrayList.get(position).category_id);
+                        notesArrayList.get(position).time, notesArrayList.get(position).category_id, position);
             }
         });
 
@@ -133,12 +133,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         }
     }
 
-    public void editCategoryDialog(int note_id, String title, String description, String date, String time, int categoryId) {
+    public void editCategoryDialog(int note_id, String title, String description, String date, String time, int categoryId, int pos) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_note, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtNoteTitle = dialogView.findViewById(R.id.edtNoteTitle);
         EditText edtNoteDecription = dialogView.findViewById(R.id.edtNoteDecription);
@@ -162,11 +162,12 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
                 String title = edtNoteTitle.getText().toString().trim();
                 String description = edtNoteDecription.getText().toString().trim();
                 if (!title.isEmpty() && !description.isEmpty()) {
-                    database.updateNote(new Notes(note_id, categoryId, edtNoteTitle.getText().toString().trim(),
-                            edtNoteDecription.getText().toString().trim(), date, time), note_id);
+                    database.updateNote(new Notes(note_id, categoryId, title, description, date, time), note_id);
+                    notesArrayList.get(pos).note_title = title;
+                    notesArrayList.get(pos).note_description = description;
+                    notifyItemChanged(pos);
                     alertDialog.dismiss();
-                    context.startActivity(new Intent(context, NewNoteActivity.class));
-                    ((Activity) context).finish();
+
                 } else if (title.isEmpty()) {
                     edtNoteTitle.setError("Required");
                     edtNoteTitle.requestFocus();
