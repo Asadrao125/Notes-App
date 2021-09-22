@@ -107,7 +107,7 @@ public class Database {
         sqLiteDatabase.close();
     }
 
-    //============================ START CUSTOM METHODS / CRUD FOR CATEGORIES TABLE ====================================
+    //============================ START CUSTOM METHODS FOR CATEGORIES TABLE ====================================
 
     /*
     CREATE TABLE "categories" (
@@ -243,7 +243,7 @@ public class Database {
         close();
     }
 
-    //============================ START CUSTOM METHODS / CRUD FOR Notes TABLE ====================================
+    //============================ START CUSTOM METHODS FOR NOTES TABLE ====================================
 
     /*
     * CREATE TABLE "notes" (

@@ -79,6 +79,15 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             }
         });
 
+        String[] dates = notesArrayList.get(position).time.split(":");
+        String hour = dates[0].trim();
+        int h = Integer.parseInt(hour);
+        if (h > 12) {
+            holder.tvTime.setText(notesArrayList.get(position).time + " pm");
+        } else {
+            holder.tvTime.setText(notesArrayList.get(position).time + " am");
+        }
+
         if (InternetConnection.isNetworkConnected((Activity) context)) {
             if (notesArrayList.get(position).note_description.contains("http")) {
                 holder.urlEmbeddedView.setVisibility(View.VISIBLE);
@@ -114,7 +123,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView tvTitle, tvDescription;
+        TextView tvTitle, tvDescription, tvTime;
         URLEmbeddedView urlEmbeddedView;
         ImageView imgDelete, imgEdit, imgCopy;
 
@@ -126,6 +135,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             tvDescription = itemView.findViewById(R.id.tvDescription);
             imgCopy = itemView.findViewById(R.id.imgCopy);
             urlEmbeddedView = itemView.findViewById(R.id.urlEmbedView);
+            tvTime = itemView.findViewById(R.id.tvTime);
         }
     }
 

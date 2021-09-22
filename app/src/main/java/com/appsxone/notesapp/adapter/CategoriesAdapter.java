@@ -78,6 +78,15 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
 
+        String[] dates = categoriesArrayList.get(position).time.split(":");
+        String hour = dates[0].trim();
+        int h = Integer.parseInt(hour);
+        if (h > 12) {
+            holder.tvTime.setText(categoriesArrayList.get(position).time + " pm");
+        } else {
+            holder.tvTime.setText(categoriesArrayList.get(position).time + " am");
+        }
+
         ArrayList<Notes> notesArrayList = database.getAllNotes(categoriesArrayList.get(position).category_id);
         if (notesArrayList != null) {
             int size = notesArrayList.size();
@@ -95,7 +104,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textView, tvCategoryName, tvNotesSize;
+        TextView textView, tvCategoryName, tvNotesSize, tvTime;
         ImageView imgEdit, imgDelete;
 
         public MyViewHolder(@NonNull View itemView) {
@@ -105,6 +114,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             imgEdit = itemView.findViewById(R.id.imgEdit);
             imgDelete = itemView.findViewById(R.id.imgDelete);
             tvNotesSize = itemView.findViewById(R.id.tvNotesSize);
+            tvTime = itemView.findViewById(R.id.tvTime);
         }
     }
 

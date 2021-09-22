@@ -32,8 +32,8 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     Database database;
-    ImageView imgFilter;
     EditText edtSearch;
+    ImageView imgFilter;
     LinearLayout noDataLayout;
     RecyclerView rvCategories;
     FloatingActionButton fabAddCategory;

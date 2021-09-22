@@ -40,7 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"
             android:background="@drawable/circle">
 
             <TextView
@@ -80,6 +80,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 Note" />
+
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="5dp"
+                android:text="03:30 pm"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
