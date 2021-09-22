@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class NewNoteActivity extends AppCompatActivity {
     Database database;
     ImageView imgBack;
     RecyclerView rvNotes;
+    LinearLayout noDataLayout;
     FloatingActionButton fabAddNote;
     ArrayList<Notes> notesArrayList = new ArrayList<>();
 
@@ -55,6 +57,7 @@ public class NewNoteActivity extends AppCompatActivity {
         rvNotes.setLayoutManager(linearLayoutManager);
         imgBack = findViewById(R.id.imgBack);
         tvTitle = findViewById(R.id.tvTitle);
+        noDataLayout = findViewById(R.id.noDataLayout);
 
         tvTitle.setText(name);
 
@@ -85,7 +88,6 @@ public class NewNoteActivity extends AppCompatActivity {
                 super.onScrolled(recyclerView, dx, dy);
             }
         });
-
     }
 
     public void setAdapter() {
@@ -101,7 +103,7 @@ public class NewNoteActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.dialog_add_note, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtNoteTitle = dialogView.findViewById(R.id.edtNoteTitle);
         EditText edtNoteDecription = dialogView.findViewById(R.id.edtNoteDecription);

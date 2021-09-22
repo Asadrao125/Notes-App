@@ -114,7 +114,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_category, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtCategory = dialogView.findViewById(R.id.edtCategory);
         Button btnSave = dialogView.findViewById(R.id.btnSave);

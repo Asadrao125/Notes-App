@@ -122,7 +122,7 @@ public class HomeActivity extends AppCompatActivity {
         View dialogView = inflater.inflate(R.layout.diaog_filter, null);
         dialogBuilder.setView(dialogView);
         AlertDialog alertDialog = dialogBuilder.create();
-        //alertDialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         Button btnApplyFilter = dialogView.findViewById(R.id.btnApplyFilter);
         RadioButton rbAllTime = dialogView.findViewById(R.id.rbAllTime);
@@ -187,10 +187,10 @@ public class HomeActivity extends AppCompatActivity {
                     DateFunctions.getCalculatedDate("", -7));
         } else if (SharedPref.read("key", "").equals("M")) {
             database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -25));
+                    DateFunctions.getCalculatedDate("", -30));
         } else if (SharedPref.read("key", "").equals("Y")) {
             database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -300));
+                    DateFunctions.getCalculatedDate("", -365));
         } else {
             categoriesArrayList = database.getAllCategories();
         }
@@ -198,9 +198,7 @@ public class HomeActivity extends AppCompatActivity {
         if (categoriesArrayList != null) {
             rvCategories.setAdapter(new CategoriesAdapter(this, categoriesArrayList));
             rvCategories.setVisibility(View.VISIBLE);
-            noDataLayout.setVisibility(View.GONE);
         } else {
-            noDataLayout.setVisibility(View.VISIBLE);
             rvCategories.setVisibility(View.GONE);
         }
     }
