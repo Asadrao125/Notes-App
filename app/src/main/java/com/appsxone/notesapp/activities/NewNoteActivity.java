@@ -30,8 +30,8 @@ public class NewNoteActivity extends AppCompatActivity {
     String name;
     int categoryId;
     TextView tvTitle;
-    Database database;
     ImageView imgBack;
+    Database database;
     RecyclerView rvNotes;
     LinearLayout addLayout;
     LinearLayout noDataLayout;
