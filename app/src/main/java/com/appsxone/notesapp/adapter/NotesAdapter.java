@@ -230,5 +230,4 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
-
 }

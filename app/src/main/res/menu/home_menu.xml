@@ -9,18 +9,9 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/btnAbout"
+        android:id="@+id/btnSettings"
         android:icon="@drawable/ic_more"
-        android:title="About Us"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/btnRate"
-        android:title="Rate App"
-        app:showAsAction="never" />
-    <item
-        android:id="@+id/btnFeedback"
-        android:title="Feedback"
+        android:title="Settings"
         app:showAsAction="never" />
 
 </menu>

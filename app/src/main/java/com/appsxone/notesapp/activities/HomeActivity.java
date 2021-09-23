@@ -150,17 +150,11 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
-                    case R.id.btnAbout:
-                        showAboutDialog();
-                        return true;
-                    case R.id.btnRate:
-                        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
-                        return true;
-                    case R.id.btnFeedback:
-                        Toast.makeText(HomeActivity.this, "Under Development", Toast.LENGTH_SHORT).show();
-                        return true;
                     case R.id.btnTrash:
                         startActivity(new Intent(getApplicationContext(), TrashActivity.class));
+                        return true;
+                    case R.id.btnSettings:
+                        startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         return true;
                 }
                 return false;
@@ -298,34 +292,6 @@ public class HomeActivity extends AppCompatActivity {
                     edtCategory.setError("Required");
                     edtCategory.requestFocus();
                 }
-            }
-        });
-
-        alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        alertDialog.show();
-    }
-
-    public void showAboutDialog() {
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = this.getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_about, null);
-        dialogBuilder.setView(dialogView);
-        AlertDialog alertDialog = dialogBuilder.create();
-
-        ImageView imgClose = dialogView.findViewById(R.id.imgClose);
-        Button btnClose = dialogView.findViewById(R.id.btnClose);
-
-        imgClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
-
-        btnClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
             }
         });
 
