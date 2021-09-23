@@ -33,8 +33,8 @@ public class NewNoteActivity extends AppCompatActivity {
     Database database;
     ImageView imgBack;
     RecyclerView rvNotes;
+    LinearLayout addLayout;
     LinearLayout noDataLayout;
-    FloatingActionButton fabAddNote;
     ArrayList<Notes> notesArrayList = new ArrayList<>();
 
     @Override
@@ -45,7 +45,6 @@ public class NewNoteActivity extends AppCompatActivity {
         name = getIntent().getStringExtra("name");
         categoryId = getIntent().getIntExtra("id", 1000);
         database = new Database(this);
-        fabAddNote = findViewById(R.id.fabAddNote);
         rvNotes = findViewById(R.id.rvNotes);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
@@ -54,6 +53,7 @@ public class NewNoteActivity extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack);
         tvTitle = findViewById(R.id.tvTitle);
         noDataLayout = findViewById(R.id.noDataLayout);
+        addLayout = findViewById(R.id.addLayout);
 
         tvTitle.setText(name);
 
@@ -66,24 +66,13 @@ public class NewNoteActivity extends AppCompatActivity {
 
         setAdapter();
 
-        fabAddNote.setOnClickListener(new View.OnClickListener() {
+        addLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                addCategoryDialog();
+                addNoteDialog();
             }
         });
 
-        rvNotes.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) {
-                    fabAddNote.hide();
-                } else {
-                    fabAddNote.show();
-                }
-                super.onScrolled(recyclerView, dx, dy);
-            }
-        });
     }
 
     public void setAdapter() {
@@ -93,7 +82,7 @@ public class NewNoteActivity extends AppCompatActivity {
         }
     }
 
-    public void addCategoryDialog() {
+    public void addNoteDialog() {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
         LayoutInflater inflater = this.getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_add_note, null);

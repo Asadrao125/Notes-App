@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,14 +57,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             @Override
             public void onClick(View v) {
                 editCategoryDialog(categoriesArrayList.get(position).category_id, categoriesArrayList.get(position).category_name,
-                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time);
+                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time,
+                        categoriesArrayList.get(position).idDeleted);
             }
         });
 
         holder.imgDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                confirmationDiaog(categoriesArrayList.get(position).category_id, position, categoriesArrayList.get(position).category_name);
+                confirmationDiaog(categoriesArrayList.get(position).category_id, position, categoriesArrayList.get(position).category_name,
+                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time);
             }
         });
 
@@ -118,7 +121,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         }
     }
 
-    public void editCategoryDialog(int id, String name, String date, String time) {
+    public void editCategoryDialog(int id, String name, String date, String time, int isDeleted) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_category, null);
         dialogBuilder.setView(dialogView);
@@ -144,7 +147,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             public void onClick(View v) {
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
-                    database.updateCategory(new Categories(category, id, date, time), id);
+                    database.updateCategory(new Categories(category, id, date, time, isDeleted), id);
                     alertDialog.dismiss();
                     context.startActivity(new Intent(context, HomeActivity.class));
                     ((Activity) context).finish();
@@ -159,17 +162,22 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         alertDialog.show();
     }
 
-    public void confirmationDiaog(int categoryId, int pos, String categoryTitle) {
+    public void confirmationDiaog(int categoryId, int pos, String categoryTitle, String date, String time) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("Are you sure you want to delete " + categoryTitle + " ?");
         builder1.setCancelable(true);
 
         builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                database.deleteCategory(categoryId);
+                database.updateCategory(new Categories(categoryTitle, categoryId, date, time, 1), categoryId);
                 categoriesArrayList.remove(pos);
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, categoriesArrayList.size());
+
+                if (categoriesArrayList != null) {
+                    HomeActivity.tvCategories.setText("Categories: " + categoriesArrayList.size());
+                }
+
             }
         });
         builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -179,6 +187,12 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         });
         AlertDialog alert11 = builder1.create();
         alert11.show();
+    }
+
+    public int sumAllNotes(ArrayList<Notes> list) {
+        int sum = 0;
+        sum = sum + list.size();
+        return sum;
     }
 
 }

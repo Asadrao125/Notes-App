@@ -45,7 +45,8 @@
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:padding="10dp"
-                android:text="Note Description" />
+                android:text="Note Description"
+                android:textIsSelectable="true" />
 
             <com.nguyencse.URLEmbeddedView
                 android:id="@+id/urlEmbedView"

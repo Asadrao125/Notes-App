@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
+        <activity android:name=".activities.TrashActivity"></activity>
         <activity android:name=".activities.NewNoteActivity" />
         <activity android:name=".activities.HomeActivity">
             <intent-filter>

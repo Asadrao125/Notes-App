@@ -24,12 +24,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.adapter.CategoriesAdapter;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
+import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.utils.DateFunctions;
 import com.appsxone.notesapp.utils.SharedPref;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -40,10 +42,11 @@ public class HomeActivity extends AppCompatActivity {
     Database database;
     EditText edtSearch;
     CheckBox cbReverse;
+    LinearLayout addLayout;
     LinearLayout noDataLayout;
     RecyclerView rvCategories;
     ImageView imgFilter, imgMore;
-    FloatingActionButton fabAddCategory;
+    public static TextView tvCategories;
     LinearLayoutManager linearLayoutManager;
     ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
@@ -55,11 +58,12 @@ public class HomeActivity extends AppCompatActivity {
         database = new Database(this);
         database.createDatabase();
         SharedPref.init(getApplicationContext());
-        fabAddCategory = findViewById(R.id.fabAddCategory);
         cbReverse = findViewById(R.id.cbReverse);
         rvCategories = findViewById(R.id.rvCategories);
         linearLayoutManager = new LinearLayoutManager(this);
         imgMore = findViewById(R.id.imgMore);
+        addLayout = findViewById(R.id.addLayout);
+        tvCategories = findViewById(R.id.tvCategories);
 
         if (SharedPref.read("reverse", "").equals("true")) {
             cbReverse.setChecked(true);
@@ -91,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
         SharedPref.init(this);
         edtSearch = findViewById(R.id.edtSearch);
 
-        fabAddCategory.setOnClickListener(new View.OnClickListener() {
+        addLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addCategoryDialog();
@@ -104,18 +108,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showFilterDialog();
-            }
-        });
-
-        rvCategories.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                if (dy > 0) {
-                    fabAddCategory.hide();
-                } else {
-                    fabAddCategory.show();
-                }
-                super.onScrolled(recyclerView, dx, dy);
             }
         });
 
@@ -166,6 +158,9 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.btnFeedback:
                         Toast.makeText(HomeActivity.this, "Under Development", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.btnTrash:
+                        startActivity(new Intent(getApplicationContext(), TrashActivity.class));
                         return true;
                 }
                 return false;
@@ -236,34 +231,35 @@ public class HomeActivity extends AppCompatActivity {
                 alertDialog.dismiss();
             }
         });
-
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }
 
     private void setDapter() {
         if (SharedPref.read("key", "").equals("A")) {
-            categoriesArrayList = database.getAllCategories();
+            categoriesArrayList = database.getAllCategories(0);
         } else if (SharedPref.read("key", "").equals("D")) {
-            categoriesArrayList = database.getAllDailyCategories(DateFunctions.getCurrentDate());
+            categoriesArrayList = database.getAllDailyCategories(DateFunctions.getCurrentDate(), 0);
         } else if (SharedPref.read("key", "").equals("W")) {
-            categoriesArrayList = database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -7));
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -7), 0);
         } else if (SharedPref.read("key", "").equals("M")) {
-            database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -30));
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -30), 0);
         } else if (SharedPref.read("key", "").equals("Y")) {
-            database.getAllWeeklyMonthlyYearlyNotes(DateFunctions.getCurrentDate(),
-                    DateFunctions.getCalculatedDate("", -365));
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+                    DateFunctions.getCalculatedDate("", -365), 0);
         } else {
-            categoriesArrayList = database.getAllCategories();
+            categoriesArrayList = database.getAllCategories(0);
         }
 
         if (categoriesArrayList != null) {
             rvCategories.setAdapter(new CategoriesAdapter(this, categoriesArrayList));
             rvCategories.setVisibility(View.VISIBLE);
+            tvCategories.setText("Categories: " + categoriesArrayList.size());
         } else {
             rvCategories.setVisibility(View.GONE);
+            tvCategories.setText("Categories: 0");
         }
     }
 
@@ -290,7 +286,8 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
-                    long status = database.saveCategory(new Categories(category, 0, DateFunctions.getCurrentDate(), DateFunctions.getCurrentTime()));
+                    long status = database.saveCategory(new Categories(category, 0, DateFunctions.getCurrentDate(),
+                            DateFunctions.getCurrentTime(), 0));
                     if (status != -1) {
                         setDapter();
                         alertDialog.dismiss();
