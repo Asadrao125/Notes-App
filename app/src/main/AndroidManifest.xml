@@ -12,16 +12,19 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
-        <activity android:name=".activities.SettingsActivity"></activity>
-        <activity android:name=".activities.TrashActivity" />
-        <activity android:name=".activities.NewNoteActivity" />
-        <activity android:name=".activities.HomeActivity">
+        <activity android:name=".activities.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name=".activities.SettingsActivity" />
+        <activity android:name=".activities.TrashActivity" />
+        <activity android:name=".activities.NewNoteActivity" />
+        <activity android:name=".activities.HomeActivity"/>
     </application>
 
 </manifest>
