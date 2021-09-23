@@ -35,6 +35,7 @@ public class NewNoteActivity extends AppCompatActivity {
     RecyclerView rvNotes;
     LinearLayout addLayout;
     LinearLayout noDataLayout;
+    public static TextView tvNotes;
     ArrayList<Notes> notesArrayList = new ArrayList<>();
 
     @Override
@@ -54,6 +55,7 @@ public class NewNoteActivity extends AppCompatActivity {
         tvTitle = findViewById(R.id.tvTitle);
         noDataLayout = findViewById(R.id.noDataLayout);
         addLayout = findViewById(R.id.addLayout);
+        tvNotes = findViewById(R.id.tvNotes);
 
         tvTitle.setText(name);
 
@@ -79,6 +81,7 @@ public class NewNoteActivity extends AppCompatActivity {
         notesArrayList = database.getAllNotes(categoryId);
         if (notesArrayList != null) {
             rvNotes.setAdapter(new NotesAdapter(this, notesArrayList));
+            tvNotes.setText("Notes: " + notesArrayList.size());
         }
     }
 
