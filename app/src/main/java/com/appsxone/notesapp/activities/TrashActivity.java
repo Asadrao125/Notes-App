@@ -29,7 +29,10 @@ public class TrashActivity extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack);
         database = new Database(this);
         rvTrashCategories = findViewById(R.id.rvTrashCategories);
-        rvTrashCategories.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
+        rvTrashCategories.setLayoutManager(linearLayoutManager);
         rvTrashCategories.setHasFixedSize(true);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
