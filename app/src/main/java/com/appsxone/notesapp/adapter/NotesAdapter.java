@@ -81,14 +81,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             }
         });
 
-        String[] dates = notesArrayList.get(position).time.split(":");
-        String hour = dates[0].trim();
-        int h = Integer.parseInt(hour);
-        if (h > 12) {
-            holder.tvTime.setText(notesArrayList.get(position).date + " " + notesArrayList.get(position).time + " pm");
-        } else {
-            holder.tvTime.setText(notesArrayList.get(position).date + " " + notesArrayList.get(position).time + " am");
-        }
+        holder.tvTime.setText(notesArrayList.get(position).date + " " + notesArrayList.get(position).time);
 
         if (InternetConnection.isNetworkConnected((Activity) context)) {
             if (notesArrayList.get(position).note_description.contains("http")) {

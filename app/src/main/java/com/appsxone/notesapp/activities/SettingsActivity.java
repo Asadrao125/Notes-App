@@ -129,8 +129,11 @@ public class SettingsActivity extends AppCompatActivity {
                 String message = edtMessage.getText().toString().trim();
                 if (!message.isEmpty()) {
                     sendEmail(message);
+                    alertDialog.dismiss();
+                } else {
+                    edtMessage.setError("Required");
+                    edtMessage.requestFocus();
                 }
-                alertDialog.dismiss();
             }
         });
 
