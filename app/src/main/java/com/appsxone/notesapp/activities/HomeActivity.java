@@ -277,7 +277,7 @@ public class HomeActivity extends AppCompatActivity {
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
                     long status = database.saveCategory(new Categories(category, 0, DateFunctions.getCurrentDate(),
-                            DateFunctions.getCurrentTime(), 0));
+                            DateFunctions.getCurrentTime(), 0, DateFunctions.getCompleteDate()));
                     if (status != -1) {
                         setDapter();
                         alertDialog.dismiss();

@@ -88,26 +88,26 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Monthly"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/sky_blue"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <RadioButton
                 android:id="@+id/rbYearly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Yearly"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
                 android:background="@color/sky_blue"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
         </RadioGroup>
 

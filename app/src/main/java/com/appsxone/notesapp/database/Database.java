@@ -115,7 +115,8 @@ public class Database {
 	"category_id"	INTEGER,
 	"date"	TEXT,
 	"time"	TEXT,
-	"idDeleted"	INTEGER,
+	"isDeleted"	INTEGER,
+	"completeDate"	TEXT,
 	PRIMARY KEY("category_id" AUTOINCREMENT));
     */
 
@@ -127,7 +128,8 @@ public class Database {
             cv.put("category_name", categories.category_name);
             cv.put("date", categories.date);
             cv.put("time", categories.time);
-            cv.put("idDeleted", categories.idDeleted);
+            cv.put("isDeleted", categories.idDeleted);
+            cv.put("completeDate", categories.completeDate);
             rowId = sqLiteDatabase.insert("categories", null, cv);
             close();
         } catch (SQLiteException e) {
@@ -143,7 +145,7 @@ public class Database {
         open();
         ArrayList<Categories> categoryBeans = new ArrayList<>();
         Categories temp;
-        String query = "select * from categories where idDeleted = '" + isDeleted + "'";
+        String query = "select * from categories where isDeleted = '" + isDeleted + "'";
 
         System.out.println("--query in getAllCategories : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -154,8 +156,9 @@ public class Database {
                 String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
                 String date = cursor.getString(cursor.getColumnIndex("date"));
                 String time = cursor.getString(cursor.getColumnIndex("time"));
-                int idDeleted = cursor.getInt(cursor.getColumnIndex("idDeleted"));
-                temp = new Categories(category_name, category_id, date, time, idDeleted);
+                int idDeleted = cursor.getInt(cursor.getColumnIndex("isDeleted"));
+                String completeDate = cursor.getString(cursor.getColumnIndex("completeDate"));
+                temp = new Categories(category_name, category_id, date, time, idDeleted, completeDate);
                 categoryBeans.add(temp);
                 temp = null;
             }
@@ -171,7 +174,7 @@ public class Database {
         open();
         ArrayList<Categories> categoryBeans = new ArrayList<>();
         Categories temp;
-        String query = "SELECT * FROM categories WHERE date = '" + date + "' AND idDeleted = '" + isDeleted + "'";
+        String query = "SELECT * FROM categories WHERE date = '" + date + "' AND isDeleted = '" + isDeleted + "'";
 
         System.out.println("--query in getAllDailyCategories : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
@@ -182,8 +185,10 @@ public class Database {
                 String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
                 String date1 = cursor.getString(cursor.getColumnIndex("date"));
                 String time = cursor.getString(cursor.getColumnIndex("time"));
-                int idDeleted = cursor.getInt(cursor.getColumnIndex("idDeleted"));
-                temp = new Categories(category_name, category_id, date1, time, idDeleted);
+                String completeDate = cursor.getString(cursor.getColumnIndex("completeDate"));
+                int isDeletednew = cursor.getInt(cursor.getColumnIndex("isDeleted"));
+
+                temp = new Categories(category_name, category_id, date1, time, isDeletednew, completeDate);
                 categoryBeans.add(temp);
                 temp = null;
             }
@@ -201,9 +206,9 @@ public class Database {
         Categories temp;
 
         //String query = "SELECT * FROM categories WHERE date BETWEEN '" + endDate + "' AND '" + startDate + "'";
-        String query = "SELECT * FROM categories WHERE date >= '" + endDate + "' AND date <= '" + startDate + "' AND idDeleted = '" + isDeleted + "'";
+        String query = "SELECT * FROM categories WHERE completeDate >= '" + endDate + "' AND completeDate <= '" + startDate + "' AND isDeleted = '" + isDeleted + "'";
 
-        System.out.println("--query in getAllWeeklyMonthlyYearlyNotes : " + query);
+        System.out.println("--query in getAllWeeklyMonthlyYearlyCategories : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);
 
         if (cursor.moveToFirst()) {
@@ -212,8 +217,9 @@ public class Database {
                 String category_name = cursor.getString(cursor.getColumnIndex("category_name"));
                 String date1 = cursor.getString(cursor.getColumnIndex("date"));
                 String time = cursor.getString(cursor.getColumnIndex("time"));
-                int idDeleted = cursor.getInt(cursor.getColumnIndex("idDeleted"));
-                temp = new Categories(category_name, category_id, date1, time, idDeleted);
+                String completeDate = cursor.getString(cursor.getColumnIndex("completeDate"));
+                int isDeletednew = cursor.getInt(cursor.getColumnIndex("isDeleted"));
+                temp = new Categories(category_name, category_id, date1, time, isDeletednew, completeDate);
                 categoryBeans.add(temp);
                 temp = null;
             }
@@ -238,7 +244,8 @@ public class Database {
         dataToUpdate.put("category_name", categories.category_name);
         dataToUpdate.put("date", categories.date);
         dataToUpdate.put("time", categories.time);
-        dataToUpdate.put("idDeleted", categories.idDeleted);
+        dataToUpdate.put("isDeleted", categories.idDeleted);
+        dataToUpdate.put("completeDate", categories.completeDate);
         String where = "category_id" + "=" + "'" + id + "'";
         try {
             int rows = sqLiteDatabase.update("categories", dataToUpdate, where, null);

@@ -66,7 +66,8 @@ public class TrashCategoriesAdapter extends RecyclerView.Adapter<TrashCategories
             @Override
             public void onClick(View v) {
                 recoverCategory(categoriesArrayList.get(position).category_id, position, categoriesArrayList.get(position).category_name,
-                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time);
+                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time,
+                        categoriesArrayList.get(position).completeDate);
             }
         });
 
@@ -99,8 +100,8 @@ public class TrashCategoriesAdapter extends RecyclerView.Adapter<TrashCategories
         }
     }
 
-    public void recoverCategory(int categoryId, int pos, String categoryTitle, String date, String time) {
-        database.updateCategory(new Categories(categoryTitle, categoryId, date, time, 0), categoryId);
+    public void recoverCategory(int categoryId, int pos, String categoryTitle, String date, String time, String completeDate) {
+        database.updateCategory(new Categories(categoryTitle, categoryId, date, time, 0, completeDate), categoryId);
         categoriesArrayList.remove(pos);
         notifyItemRemoved(pos);
         notifyItemRangeChanged(pos, categoriesArrayList.size());

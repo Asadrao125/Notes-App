@@ -58,7 +58,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             public void onClick(View v) {
                 editCategoryDialog(categoriesArrayList.get(position).category_id, categoriesArrayList.get(position).category_name,
                         categoriesArrayList.get(position).date, categoriesArrayList.get(position).time,
-                        categoriesArrayList.get(position).idDeleted);
+                        categoriesArrayList.get(position).idDeleted, categoriesArrayList.get(position).completeDate);
             }
         });
 
@@ -66,7 +66,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             @Override
             public void onClick(View v) {
                 confirmationDiaog(categoriesArrayList.get(position).category_id, position, categoriesArrayList.get(position).category_name,
-                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time);
+                        categoriesArrayList.get(position).date, categoriesArrayList.get(position).time,
+                        categoriesArrayList.get(position).completeDate);
             }
         });
 
@@ -81,16 +82,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
 
-        /*String[] dates = categoriesArrayList.get(position).time.split(":");
-        String hour = dates[0].trim();
-        int h = Integer.parseInt(hour);
-        if (h > 12) {
-            holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time + " pm");
-        } else {
-            holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time + " am");
-        }*/
-
-        holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time);
+        holder.tvTime.setText(categoriesArrayList.get(position).completeDate);
 
         ArrayList<Notes> notesArrayList = database.getAllNotes(categoriesArrayList.get(position).category_id);
         if (notesArrayList != null) {
@@ -123,7 +115,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         }
     }
 
-    public void editCategoryDialog(int id, String name, String date, String time, int isDeleted) {
+    public void editCategoryDialog(int id, String name, String date, String time, int isDeleted, String completeDate) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_category, null);
         dialogBuilder.setView(dialogView);
@@ -149,7 +141,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             public void onClick(View v) {
                 String category = edtCategory.getText().toString().trim();
                 if (!category.isEmpty()) {
-                    database.updateCategory(new Categories(category, id, date, time, isDeleted), id);
+                    database.updateCategory(new Categories(category, id, date, time, isDeleted, completeDate), id);
                     alertDialog.dismiss();
                     context.startActivity(new Intent(context, HomeActivity.class));
                     ((Activity) context).finish();
@@ -164,14 +156,14 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         alertDialog.show();
     }
 
-    public void confirmationDiaog(int categoryId, int pos, String categoryTitle, String date, String time) {
+    public void confirmationDiaog(int categoryId, int pos, String categoryTitle, String date, String time, String completeDate) {
         AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
         builder1.setMessage("Are you sure you want to delete " + categoryTitle + " ?");
         builder1.setCancelable(true);
 
         builder1.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                database.updateCategory(new Categories(categoryTitle, categoryId, date, time, 1), categoryId);
+                database.updateCategory(new Categories(categoryTitle, categoryId, date, time, 1, completeDate), categoryId);
                 categoriesArrayList.remove(pos);
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, categoriesArrayList.size());
