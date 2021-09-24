@@ -81,14 +81,16 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
             }
         });
 
-        String[] dates = categoriesArrayList.get(position).time.split(":");
+        /*String[] dates = categoriesArrayList.get(position).time.split(":");
         String hour = dates[0].trim();
         int h = Integer.parseInt(hour);
         if (h > 12) {
             holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time + " pm");
         } else {
             holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time + " am");
-        }
+        }*/
+
+        holder.tvTime.setText(categoriesArrayList.get(position).date + " " + categoriesArrayList.get(position).time);
 
         ArrayList<Notes> notesArrayList = database.getAllNotes(categoriesArrayList.get(position).category_id);
         if (notesArrayList != null) {

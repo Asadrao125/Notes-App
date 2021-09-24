@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class DateFunctions {
 
@@ -29,11 +30,6 @@ public class DateFunctions {
     }
 
     public static String getCurrentTime() {
-        Calendar currentTime = Calendar.getInstance();
-        int hour = currentTime.get(Calendar.HOUR_OF_DAY);
-        int minute = currentTime.get(Calendar.MINUTE);
-        String time = hour + " : " + minute;
-        return time;
+        return new SimpleDateFormat("HH : mm a", Locale.getDefault()).format(new Date());
     }
-
 }
