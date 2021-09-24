@@ -16,24 +16,25 @@
             android:id="@+id/imgEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="5dp"
+            android:layout_toLeftOf="@id/imgDelete"
             android:background="@drawable/ripple_effect"
             android:padding="5dp"
             android:src="@drawable/ic_edit"
-            app:tint="@color/sky_blue" />
+            app:tint="#80daeb" />
 
         <ImageView
             android:id="@+id/imgDelete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/imgEdit"
             android:background="@drawable/ripple_effect"
             android:padding="5dp"
+            android:layout_marginRight="5dp"
             android:src="@drawable/ic_delete"
-            app:tint="@android:color/holo_red_dark" />
+            app:tint="#80daeb" />
 
         <RelativeLayout
             android:id="@+id/circleLayout"
