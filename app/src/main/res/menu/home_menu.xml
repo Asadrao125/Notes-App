@@ -9,9 +9,9 @@
         app:showAsAction="never" />
 
     <item
-        android:id="@+id/btnCalender"
+        android:id="@+id/btnCustomFilter"
         android:icon="@drawable/ic_more"
-        android:title="Calender"
+        android:title="Custom Filter"
         app:showAsAction="never" />
 
     <item
