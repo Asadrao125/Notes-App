@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:hint="Category Name"
-                    android:inputType="textPersonName" />
+                    android:inputType="textCapWords" />
 
             </com.google.android.material.textfield.TextInputLayout>
 

@@ -61,7 +61,7 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:layout_toStartOf="@+id/imgDelete"
+            android:layout_toStartOf="@+id/imgEdit"
             android:layout_toLeftOf="@+id/imgEdit"
             android:layout_toEndOf="@id/circleLayout"
             android:layout_toRightOf="@id/circleLayout"
