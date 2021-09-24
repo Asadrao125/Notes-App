@@ -8,11 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,10 +29,8 @@ import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.adapter.CategoriesAdapter;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
-import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.utils.DateFunctions;
 import com.appsxone.notesapp.utils.SharedPref;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
