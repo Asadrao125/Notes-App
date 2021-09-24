@@ -152,6 +152,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.btnSettings:
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         return true;
+                    case R.id.btnCalender:
+                        startActivity(new Intent(getApplicationContext(), CalenderActivity.class));
+                        return true;
                 }
                 return false;
             }

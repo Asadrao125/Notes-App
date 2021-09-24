@@ -9,6 +9,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/btnCalender"
+        android:icon="@drawable/ic_more"
+        android:title="Calender"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/btnSettings"
         android:icon="@drawable/ic_more"
         android:title="Settings"
