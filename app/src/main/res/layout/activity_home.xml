@@ -63,7 +63,7 @@
                     android:padding="15dp"
                     android:text="Categories"
                     android:textColor="@color/sky_blue"
-                    android:textSize="16sp" />
+                    android:textSize="18sp" />
 
             </RelativeLayout>
 
