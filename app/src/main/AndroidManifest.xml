@@ -23,6 +23,11 @@
         <activity android:name=".activities.TrashActivity" />
         <activity android:name=".activities.NewNoteActivity" />
         <activity android:name=".activities.HomeActivity" />
+
+        <receiver
+            android:name=".AlarmReciever"
+            android:enabled="true" />
+
     </application>
 
 </manifest>
