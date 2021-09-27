@@ -372,4 +372,18 @@ public class Database {
         }
         close();
     }
+
+    public void deleteCategories() {
+        open();
+        String query = "delete from categories";
+        sqLiteDatabase.execSQL(query);
+        close();
+    }
+
+    public void deleteNotes() {
+        open();
+        String query = "delete from notes";
+        sqLiteDatabase.execSQL(query);
+        close();
+    }
 }
