@@ -1,5 +1,6 @@
-package com.appsxone.notesapp;
+package com.appsxone.notesapp.alarm;
 
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +20,7 @@ public class AlarmReciever extends BroadcastReceiver {
         r = intent.getIntExtra("r", 100000);
 
         completeNotif(context.getApplicationContext(), val);
-
+        SetAlarm.setAlarm((Activity) context, h, m, r, val);
     }
 
     public void completeNotif(Context context, String value) {
