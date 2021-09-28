@@ -40,7 +40,7 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView> <!-- TOOLBAR -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvAboutApp"
@@ -118,7 +118,7 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView> <!-- ABOUT APP -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvRateApp"
@@ -195,7 +195,7 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView> <!-- RATE APP -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvFeedback"
@@ -271,7 +271,7 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView> <!-- FEEDBACK -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvErase"
@@ -347,6 +347,6 @@
 
         </RelativeLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView> <!-- Erase All Data -->
 
 </LinearLayout>
