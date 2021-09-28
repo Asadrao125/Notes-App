@@ -1,4 +1,4 @@
-package com.appsxone.notesapp.utils;
+package com.appsxone.notesapp.alarm;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -7,12 +7,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 
-import com.appsxone.notesapp.AlarmReciever;
-
 import java.util.Calendar;
 
 public class SetAlarm {
-    private void setAlarm(Activity activity, int hour, int mins, int requestCode, String morningOrEvening) {
+    public static void setAlarm(Activity activity, int hour, int mins, int requestCode, String morningOrEvening) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hour);
         c.set(Calendar.MINUTE, mins);

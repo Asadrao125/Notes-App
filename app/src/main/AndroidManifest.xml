@@ -25,7 +25,7 @@
         <activity android:name=".activities.HomeActivity" />
 
         <receiver
-            android:name=".AlarmReciever"
+            android:name=".alarm.AlarmReciever"
             android:enabled="true" />
 
     </application>

@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.adapter.CategoriesAdapter;
+import com.appsxone.notesapp.alarm.SetAlarm;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.utils.DateFunctions;
@@ -86,6 +87,10 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         });
+
+        SetAlarm.setAlarm(this, 8, 0, 1, "Good Morning");
+        SetAlarm.setAlarm(this, 14, 0, 2, "Good Evening");
+        SetAlarm.setAlarm(this, 21, 0, 3, "Good Night");
 
         rvCategories.setLayoutManager(linearLayoutManager);
         rvCategories.setHasFixedSize(true);

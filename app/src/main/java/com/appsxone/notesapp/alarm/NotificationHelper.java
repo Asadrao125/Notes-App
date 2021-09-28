@@ -1,4 +1,4 @@
-package com.appsxone.notesapp;
+package com.appsxone.notesapp.alarm;
 
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -13,6 +13,8 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.appsxone.notesapp.utils.Quotes;
+import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.activities.HomeActivity;
 
 public class NotificationHelper extends ContextWrapper {
@@ -44,12 +46,12 @@ public class NotificationHelper extends ContextWrapper {
     public NotificationCompat.Builder getChannelNotification(String morningng) {
         Intent activityIntent = new Intent(getApplicationContext(), HomeActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
-
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle(morningng)
                 .setSmallIcon(R.drawable.logo)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setColor(R.color.sky_blue)
-                .setContentIntent(contentIntent);
+                .setContentIntent(contentIntent)
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(Quotes.getRandomQuoteFromList()));
     }
 }
