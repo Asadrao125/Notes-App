@@ -33,6 +33,7 @@ import com.appsxone.notesapp.adapter.CategoriesAdapter;
 import com.appsxone.notesapp.alarm.SetAlarm;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
+import com.appsxone.notesapp.ui_design.DesignActivity;
 import com.appsxone.notesapp.utils.DateFunctions;
 import com.appsxone.notesapp.utils.SharedPref;
 
@@ -162,6 +163,9 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
                     case R.id.btnCustomFilter:
                         createDialogWithoutDateField().show();
+                        return true;
+                        case R.id.btnNewDesign:
+                            startActivity(new Intent(getApplicationContext(), DesignActivity.class));
                         return true;
                 }
                 return false;

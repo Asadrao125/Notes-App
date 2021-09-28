@@ -8,4 +8,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="sky_blue">#429AFE</color>
+
+    <color name="color1">#47C9A6</color>
+    <color name="color2">#F8923D</color>
+    <color name="color3">#2FAEFD</color>
+    <color name="color4">#E38DF7</color>
+    <color name="color5">#FD7378</color>
+    <color name="color6">#C3C63B</color>
+    <color name="color7">#5B69F1</color>
+    <color name="color8">#36BF4D</color>
+    <color name="color9">#8A72E3</color>
 </resources>

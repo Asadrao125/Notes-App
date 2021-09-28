@@ -118,7 +118,7 @@
 
         </RelativeLayout>
 
-        </androidx.cardview.widget.CardView> <!-- ABOUT APP -->
+    </androidx.cardview.widget.CardView> <!-- ABOUT APP -->
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvRateApp"

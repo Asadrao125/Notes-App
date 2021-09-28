@@ -16,6 +16,12 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/btnNewDesign"
+        android:icon="@drawable/ic_more"
+        android:title="New Design"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/btnSettings"
         android:icon="@drawable/ic_more"
         android:title="Settings"

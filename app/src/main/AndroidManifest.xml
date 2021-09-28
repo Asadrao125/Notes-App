@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
+        <activity android:name=".ui_design.DesignActivity"></activity>
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +28,6 @@
         <receiver
             android:name=".alarm.AlarmReciever"
             android:enabled="true" />
-
     </application>
 
 </manifest>
