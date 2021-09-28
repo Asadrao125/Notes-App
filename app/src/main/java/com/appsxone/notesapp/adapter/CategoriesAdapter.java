@@ -182,11 +182,4 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         AlertDialog alert11 = builder1.create();
         alert11.show();
     }
-
-    public int sumAllNotes(ArrayList<Notes> list) {
-        int sum = 0;
-        sum = sum + list.size();
-        return sum;
-    }
-
 }
