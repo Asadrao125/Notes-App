@@ -164,8 +164,8 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.btnCustomFilter:
                         createDialogWithoutDateField().show();
                         return true;
-                        case R.id.btnNewDesign:
-                            startActivity(new Intent(getApplicationContext(), DesignActivity.class));
+                    case R.id.btnNewDesign:
+                        startActivity(new Intent(getApplicationContext(), DesignActivity.class));
                         return true;
                 }
                 return false;
