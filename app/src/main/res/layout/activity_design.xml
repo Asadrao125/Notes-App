@@ -67,7 +67,7 @@
                 android:layout_gravity="center"
                 android:background="@null"
                 android:hint="Search For ..."
-                android:imeOptions="actionGo"
+                android:imeOptions="actionSearch"
                 android:inputType="textCapSentences"
                 android:textSize="15sp" />
 
