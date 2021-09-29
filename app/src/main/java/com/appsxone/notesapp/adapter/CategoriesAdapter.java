@@ -167,11 +167,11 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 categoriesArrayList.remove(pos);
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, categoriesArrayList.size());
-
                 if (categoriesArrayList != null) {
                     HomeActivity.tvCategories.setText("Categories: " + categoriesArrayList.size());
+                    context.startActivity(new Intent(context, HomeActivity.class));
+                    ((Activity) context).finish();
                 }
-
             }
         });
         builder1.setNegativeButton("No", new DialogInterface.OnClickListener() {

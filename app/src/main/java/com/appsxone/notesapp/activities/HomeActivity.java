@@ -48,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
     EditText edtSearch;
     CheckBox cbReverse;
     LinearLayout addLayout;
-    LinearLayout noDataLayout;
+    public static LinearLayout noDataLayout;
     RecyclerView rvCategories;
     ImageView imgFilter, imgMore;
     public static TextView tvCategories;
@@ -195,8 +195,10 @@ public class HomeActivity extends AppCompatActivity {
                 if (categoriesArrayList != null) {
                     rvCategories.setAdapter(new CategoriesAdapter(HomeActivity.this, categoriesArrayList));
                     rvCategories.setVisibility(View.VISIBLE);
+                    noDataLayout.setVisibility(View.GONE);
                     tvCategories.setText("Categories: " + categoriesArrayList.size());
                 } else {
+                    noDataLayout.setVisibility(View.VISIBLE);
                     rvCategories.setVisibility(View.GONE);
                     tvCategories.setText("Categories: 0");
                 }
@@ -300,7 +302,9 @@ public class HomeActivity extends AppCompatActivity {
             rvCategories.setAdapter(new CategoriesAdapter(this, categoriesArrayList));
             rvCategories.setVisibility(View.VISIBLE);
             tvCategories.setText("Categories: " + categoriesArrayList.size());
+            noDataLayout.setVisibility(View.GONE);
         } else {
+            noDataLayout.setVisibility(View.VISIBLE);
             rvCategories.setVisibility(View.GONE);
             tvCategories.setText("Categories: 0");
         }

@@ -10,7 +10,7 @@ import android.os.Build;
 import java.util.Calendar;
 
 public class SetAlarm {
-    public static void setAlarm(Activity activity, int hour, int mins, int requestCode, String morningOrEvening) {
+    public static void setAlarm(Context activity, int hour, int mins, int requestCode, String morningOrEvening) {
         Calendar c = Calendar.getInstance();
         c.set(Calendar.HOUR_OF_DAY, hour);
         c.set(Calendar.MINUTE, mins);
