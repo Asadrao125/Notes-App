@@ -11,10 +11,11 @@
         <item name="android:windowEnterAnimation">@anim/slide_up</item>
         <item name="android:windowExitAnimation">@anim/slide_bottom</item>
     </style>
-    <!-- Alert Dialog -->
-    <style name="MyAlertDialogTheme" parent="Theme.MaterialComponents">
-        <item name="colorPrimary">@color/sky_blue</item>
-        <item name="colorSecondary">@color/sky_blue</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/sky_blue</item>
+    <!-- Date Picker Dialog Theme -->
+    <style name="my_dialog_theme" parent="ThemeOverlay.AppCompat.Dialog">
+        <item name="colorAccent">@color/sky_blue</item>             <!-- Header Background -->
+        <item name="android:windowBackground">@color/white</item>     <!-- Calendar Background -->
+        <item name="android:textColorPrimary">@color/black</item>     <!-- Days of the Month -->
+        <item name="android:textColorSecondary">@color/sky_blue</item>  <!-- Days of the Week -->
     </style>
 </resources>

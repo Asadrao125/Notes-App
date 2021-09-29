@@ -37,7 +37,11 @@ import com.appsxone.notesapp.ui_design.DesignActivity;
 import com.appsxone.notesapp.utils.DateFunctions;
 import com.appsxone.notesapp.utils.SharedPref;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class HomeActivity extends AppCompatActivity {
     Database database;
@@ -162,7 +166,7 @@ public class HomeActivity extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
                         return true;
                     case R.id.btnCustomFilter:
-                        createDialogWithoutDateField().show();
+                        customDateFilter();
                         return true;
                     case R.id.btnNewDesign:
                         startActivity(new Intent(getApplicationContext(), DesignActivity.class));
@@ -175,28 +179,30 @@ public class HomeActivity extends AppCompatActivity {
         popup.show();
     }
 
-    private DatePickerDialog createDialogWithoutDateField() {
-        DatePickerDialog dpd = new DatePickerDialog(this, null, 2014, 1, 24);
-        try {
-            java.lang.reflect.Field[] datePickerDialogFields = dpd.getClass().getDeclaredFields();
-            for (java.lang.reflect.Field datePickerDialogField : datePickerDialogFields) {
-                if (datePickerDialogField.getName().equals("mDatePicker")) {
-                    datePickerDialogField.setAccessible(true);
-                    DatePicker datePicker = (DatePicker) datePickerDialogField.get(dpd);
-                    java.lang.reflect.Field[] datePickerFields = datePickerDialogField.getType().getDeclaredFields();
-                    for (java.lang.reflect.Field datePickerField : datePickerFields) {
-                        Log.i("test", datePickerField.getName());
-                        if ("mDaySpinner".equals(datePickerField.getName())) {
-                            datePickerField.setAccessible(true);
-                            Object dayPicker = datePickerField.get(datePicker);
-                            ((View) dayPicker).setVisibility(View.GONE);
-                        }
-                    }
+    private void customDateFilter() {
+        Calendar myCalendar = Calendar.getInstance();
+        myCalendar.setTime(new Date());
+        new DatePickerDialog(HomeActivity.this, R.style.my_dialog_theme, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                String myFormat = "dd-MM-yyyy";
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+                categoriesArrayList = database.getAllDailyCategories(sdf.format(myCalendar.getTime()), 0);
+
+                if (categoriesArrayList != null) {
+                    rvCategories.setAdapter(new CategoriesAdapter(HomeActivity.this, categoriesArrayList));
+                    rvCategories.setVisibility(View.VISIBLE);
+                    tvCategories.setText("Categories: " + categoriesArrayList.size());
+                } else {
+                    rvCategories.setVisibility(View.GONE);
+                    tvCategories.setText("Categories: 0");
                 }
+
             }
-        } catch (Exception ex) {
-        }
-        return dpd;
+        }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
 
     private void setLayoutManager(boolean check) {
