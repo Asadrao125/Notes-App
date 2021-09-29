@@ -218,6 +218,7 @@ public class HomeActivity extends AppCompatActivity {
         RadioButton rbWeekly = dialogView.findViewById(R.id.rbWeekly);
         RadioButton rbMonthly = dialogView.findViewById(R.id.rbMonthly);
         RadioButton rbYearly = dialogView.findViewById(R.id.rbYearly);
+        RadioButton rbYesterday = dialogView.findViewById(R.id.rbYesterday);
 
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,6 +229,8 @@ public class HomeActivity extends AppCompatActivity {
 
         if (SharedPref.read("key", "").equals("A")) {
             rbAllTime.setChecked(true);
+        } else if (SharedPref.read("key", "").equals("L")) {
+            rbYesterday.setChecked(true);
         } else if (SharedPref.read("key", "").equals("D")) {
             rbDaily.setChecked(true);
         } else if (SharedPref.read("key", "").equals("W")) {
@@ -243,6 +246,9 @@ public class HomeActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (rbAllTime.isChecked()) {
                     SharedPref.write("key", "A");
+                    setDapter();
+                } else if (rbYesterday.isChecked()) {
+                    SharedPref.write("key", "L");
                     setDapter();
                 } else if (rbDaily.isChecked()) {
                     SharedPref.write("key", "D");
@@ -267,6 +273,8 @@ public class HomeActivity extends AppCompatActivity {
     private void setDapter() {
         if (SharedPref.read("key", "").equals("A")) {
             categoriesArrayList = database.getAllCategories(0);
+        } else if (SharedPref.read("key", "").equals("L")) {
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(), DateFunctions.getCalculatedDate("", -1), 0);
         } else if (SharedPref.read("key", "").equals("D")) {
             categoriesArrayList = database.getAllDailyCategories(DateFunctions.getCurrentDate(), 0);
         } else if (SharedPref.read("key", "").equals("W")) {

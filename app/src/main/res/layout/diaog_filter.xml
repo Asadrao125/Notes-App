@@ -73,6 +73,17 @@
                 android:background="@color/sky_blue" />
 
             <RadioButton
+                android:id="@+id/rbYesterday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yesterday" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/sky_blue" />
+
+            <RadioButton
                 android:id="@+id/rbWeekly"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
