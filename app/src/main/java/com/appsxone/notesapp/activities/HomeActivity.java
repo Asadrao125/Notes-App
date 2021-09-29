@@ -44,8 +44,8 @@ public class HomeActivity extends AppCompatActivity {
     EditText edtSearch;
     CheckBox cbReverse;
     LinearLayout addLayout;
-    LinearLayout noDataLayout;
     RecyclerView rvCategories;
+    LinearLayout noDataLayout;
     ImageView imgFilter, imgMore;
     public static TextView tvCategories;
     LinearLayoutManager linearLayoutManager;
