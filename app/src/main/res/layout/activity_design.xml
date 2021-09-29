@@ -329,36 +329,36 @@
                 app:cardMaxElevation="5dp"
                 app:cardUseCompatPadding="true">
 
-               <LinearLayout
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:background="@color/color6">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color6">
 
-                   <LinearLayout
-                       android:layout_width="match_parent"
-                       android:layout_height="90dp"
-                       android:background="@drawable/ripple_effect"
-                       android:gravity="center"
-                       android:orientation="vertical"
-                       android:padding="10dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:background="@drawable/ripple_effect"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="10dp">
 
-                       <ImageView
-                           android:layout_width="40dp"
-                           android:layout_height="40dp"
-                           android:layout_gravity="center"
-                           android:src="@drawable/ic_user" />
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_user" />
 
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:layout_gravity="center"
-                           android:layout_marginTop="5dp"
-                           android:text="Item Six"
-                           android:textColor="@color/white" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="5dp"
+                            android:text="Item Six"
+                            android:textColor="@color/white" />
 
-                   </LinearLayout>
+                    </LinearLayout>
 
-               </LinearLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 
@@ -471,8 +471,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:background="@color/color9"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:background="@color/color9">
 
                     <LinearLayout
                         android:layout_width="match_parent"
