@@ -46,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         database = new Database(this);
         viewFlipper = findViewById(R.id.viewFlipper);
 
-        int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3};
+        int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
         setText();
 
