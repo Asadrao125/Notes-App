@@ -1,16 +1,26 @@
 package com.appsxone.notesapp.adapter;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
+import com.appsxone.notesapp.activities.QuoteActivity;
+import com.appsxone.notesapp.activities.SettingsActivity;
+import com.appsxone.notesapp.activities.TrashActivity;
 import com.appsxone.notesapp.database.Database;
+import com.appsxone.notesapp.ui_design.DesignActivity;
 
 import java.util.ArrayList;
 
@@ -40,9 +50,36 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                popup(holder.itemView, position);
             }
         });
+    }
+
+    private void popup(View itemView, int pos) {
+        PopupMenu popup = new PopupMenu(context, itemView);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case R.id.btnCopy:
+                        ClipboardManager clipboard = (ClipboardManager) context.getSystemService(Context.CLIPBOARD_SERVICE);
+                        ClipData clip = ClipData.newPlainText("label", quoteList.get(pos));
+                        clipboard.setPrimaryClip(clip);
+                        Toast.makeText(context, "Copied", Toast.LENGTH_SHORT).show();
+                        return true;
+                    case R.id.btnShare:
+                        Intent sendIntent = new Intent();
+                        sendIntent.setAction(Intent.ACTION_SEND);
+                        sendIntent.putExtra(Intent.EXTRA_TEXT, quoteList.get(pos));
+                        sendIntent.setType("text/plain");
+                        context.startActivity(sendIntent);
+                        return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.quote_menu);
+        popup.show();
     }
 
     @Override
