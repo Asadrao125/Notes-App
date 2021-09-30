@@ -171,6 +171,9 @@ public class HomeActivity extends AppCompatActivity {
                     case R.id.btnNewDesign:
                         startActivity(new Intent(getApplicationContext(), DesignActivity.class));
                         return true;
+                    case R.id.btnQuote:
+                        startActivity(new Intent(getApplicationContext(), QuoteActivity.class));
+                        return true;
                 }
                 return false;
             }

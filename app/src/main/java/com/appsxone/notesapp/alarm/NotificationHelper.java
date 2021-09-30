@@ -13,6 +13,7 @@ import android.os.Build;
 
 import androidx.core.app.NotificationCompat;
 
+import com.appsxone.notesapp.activities.QuoteActivity;
 import com.appsxone.notesapp.utils.Quotes;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.activities.HomeActivity;
@@ -44,7 +45,7 @@ public class NotificationHelper extends ContextWrapper {
 
     @SuppressLint("ResourceAsColor")
     public NotificationCompat.Builder getChannelNotification(String morningng) {
-        Intent activityIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        Intent activityIntent = new Intent(getApplicationContext(), QuoteActivity.class);
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, activityIntent, 0);
         return new NotificationCompat.Builder(getApplicationContext(), channelID)
                 .setContentTitle(morningng)

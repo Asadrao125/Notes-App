@@ -3,6 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/btnQuote"
+        android:icon="@drawable/ic_more"
+        android:title="Quotes"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/btnTrash"
         android:icon="@drawable/ic_more"
         android:title="Trash"
