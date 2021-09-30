@@ -57,7 +57,18 @@ public class NewNoteActivity extends AppCompatActivity {
         addLayout = findViewById(R.id.addLayout);
         tvNotes = findViewById(R.id.tvNotes);
 
-        tvTitle.setText(name);
+        if (name != null) {
+            tvTitle.setText(name);
+            addLayout.setVisibility(View.VISIBLE);
+        } else {
+            tvTitle.setText("All Notes");
+            addLayout.setVisibility(View.GONE);
+            notesArrayList = database.getAllNotes(0);
+            if (notesArrayList != null) {
+                rvNotes.setAdapter(new NotesAdapter(this, notesArrayList));
+                tvNotes.setText("Notes: " + notesArrayList.size());
+            }
+        }
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,7 +85,6 @@ public class NewNoteActivity extends AppCompatActivity {
                 addNoteDialog();
             }
         });
-
     }
 
     public void setAdapter() {

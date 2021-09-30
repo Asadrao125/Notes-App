@@ -291,10 +291,15 @@ public class Database {
     }
 
     public ArrayList<Notes> getAllNotes(int categoryId) {
+        String query = null;
         open();
         ArrayList<Notes> categoryBeans = new ArrayList<>();
         Notes temp;
-        String query = "select * from notes WHERE category_id = '" + categoryId + "'";
+        if (categoryId > 0) {
+            query = "select * from notes WHERE category_id = '" + categoryId + "'";
+        } else {
+            query = "select * from notes";
+        }
 
         System.out.println("--query in getAllAttendance : " + query);
         Cursor cursor = sqLiteDatabase.rawQuery(query, null);

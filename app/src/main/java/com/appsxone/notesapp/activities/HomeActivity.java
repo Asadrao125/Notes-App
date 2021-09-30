@@ -57,12 +57,20 @@ public class HomeActivity extends AppCompatActivity {
         cv2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /* Notes */
+                startActivity(new Intent(getApplicationContext(), NewNoteActivity.class));
+            }
+        });
+
+        cv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
                 /* Quote */
                 startActivity(new Intent(getApplicationContext(), QuoteActivity.class));
             }
         });
 
-        cv3.setOnClickListener(new View.OnClickListener() {
+        cv4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /* Trash */
@@ -70,24 +78,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        cv4.setOnClickListener(new View.OnClickListener() {
+        cv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 /* Settings */
                 startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-            }
-        });
-
-        cv5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Share App
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Let me recommed you " + getString(R.string.app_name) + " application" +
-                        "\nhttps://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
             }
         });
 
