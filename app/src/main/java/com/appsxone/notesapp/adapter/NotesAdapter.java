@@ -143,7 +143,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtNoteTitle = dialogView.findViewById(R.id.edtNoteTitle);
         EditText edtNoteDecription = dialogView.findViewById(R.id.edtNoteDecription);
-        Button btnAddNote = dialogView.findViewById(R.id.btnAddNote);
+        Button btnUpdateNote = dialogView.findViewById(R.id.btnUpdateNote);
         TextView tvTitle = dialogView.findViewById(R.id.tvTitle);
 
         tvTitle.setText("Edit " + title);
@@ -157,7 +157,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             }
         });
 
-        btnAddNote.setOnClickListener(new View.OnClickListener() {
+        btnUpdateNote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String title = edtNoteTitle.getText().toString().trim();

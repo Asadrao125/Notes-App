@@ -91,7 +91,7 @@
                 app:cardUseCompatPadding="true">
 
                 <Button
-                    android:id="@+id/btnAddNote"
+                    android:id="@+id/btnUpdateNote"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:background="@drawable/btn_background"
