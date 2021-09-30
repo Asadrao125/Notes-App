@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.appsxone.notesapp.activities.CategoriesActivity;
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.NewNoteActivity;
+import com.appsxone.notesapp.activities.NotesActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
@@ -73,7 +73,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, NewNoteActivity.class);
+                Intent intent = new Intent(context, NotesActivity.class);
                 intent.putExtra("name", categoriesArrayList.get(position).category_name);
                 intent.putExtra("id", categoriesArrayList.get(position).category_id);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

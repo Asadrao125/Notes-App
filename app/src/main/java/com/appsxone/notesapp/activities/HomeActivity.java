@@ -4,9 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,10 +13,6 @@ import android.widget.ViewFlipper;
 
 import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.CategoriesActivity;
-import com.appsxone.notesapp.activities.QuoteActivity;
-import com.appsxone.notesapp.activities.SettingsActivity;
-import com.appsxone.notesapp.activities.TrashActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
@@ -78,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
         tvNotes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), NewNoteActivity.class));
+                startActivity(new Intent(getApplicationContext(), NotesActivity.class));
             }
         });
 
@@ -94,7 +88,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /* Notes */
-                startActivity(new Intent(getApplicationContext(), NewNoteActivity.class));
+                startActivity(new Intent(getApplicationContext(), NotesActivity.class));
             }
         });
 

@@ -21,7 +21,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.NewNoteActivity;
+import com.appsxone.notesapp.activities.NotesActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.utils.InternetConnection;
@@ -195,7 +195,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
                 notifyItemRangeChanged(pos, notesArrayList.size());
                 dialog.dismiss();
                 if (notesArrayList != null) {
-                    NewNoteActivity.tvNotes.setText("Notes: " + notesArrayList.size());
+                    NotesActivity.tvNotes.setText("Notes: " + notesArrayList.size());
                 }
             }
         });

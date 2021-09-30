@@ -23,7 +23,7 @@
         </activity>
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.TrashActivity" />
-        <activity android:name=".activities.NewNoteActivity" />
+        <activity android:name=".activities.NotesActivity" />
         <activity android:name=".activities.CategoriesActivity" />
 
         <receiver

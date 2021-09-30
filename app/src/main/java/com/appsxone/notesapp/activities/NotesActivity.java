@@ -22,11 +22,10 @@ import com.appsxone.notesapp.adapter.NotesAdapter;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.utils.DateFunctions;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
-public class NewNoteActivity extends AppCompatActivity {
+public class NotesActivity extends AppCompatActivity {
     String name;
     int categoryId;
     TextView tvTitle;
@@ -41,7 +40,7 @@ public class NewNoteActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_new_note);
+        setContentView(R.layout.activity_notes);
 
         name = getIntent().getStringExtra("name");
         categoryId = getIntent().getIntExtra("id", 1000);
@@ -126,7 +125,7 @@ public class NewNoteActivity extends AppCompatActivity {
                         alertDialog.dismiss();
                         setAdapter();
                     } else {
-                        Toast.makeText(NewNoteActivity.this, "Failed to add note", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(NotesActivity.this, "Failed to add note", Toast.LENGTH_SHORT).show();
                     }
                 } else if (title.isEmpty()) {
                     edtNoteTitle.setError("Required");
