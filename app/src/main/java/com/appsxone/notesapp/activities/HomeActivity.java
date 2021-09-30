@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
@@ -23,6 +25,7 @@ import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     Database database;
+    ViewFlipper viewFlipper;
     CardView cv1, cv2, cv3, cv4, cv5, cv6;
     TextView tvCategories, tvNotes, tvVersionName;
 
@@ -41,10 +44,31 @@ public class HomeActivity extends AppCompatActivity {
         tvNotes = findViewById(R.id.tvNotes);
         tvVersionName = findViewById(R.id.tvVersionName);
         database = new Database(this);
+        viewFlipper = findViewById(R.id.viewFlipper);
+
+        int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3};
 
         setText();
 
         tvVersionName.setText("Version: " + BuildConfig.VERSION_NAME);
+
+        for (int image : imagesArray) {
+            flipperImages(image);
+        }
+
+        tvCategories.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), CategoriesActivity.class));
+            }
+        });
+
+        tvNotes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), NewNoteActivity.class));
+            }
+        });
 
         cv1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +117,16 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
             }
         });
+    }
+
+    public void flipperImages(int image) {
+        ImageView imageView = new ImageView(this);
+        imageView.setBackgroundResource(image);
+        viewFlipper.addView(imageView);
+        viewFlipper.setFlipInterval(3000);
+        viewFlipper.setAutoStart(true);
+        viewFlipper.setInAnimation(this, android.R.anim.slide_in_left);
+        viewFlipper.setOutAnimation(this, android.R.anim.slide_out_right);
     }
 
     private void setText() {
