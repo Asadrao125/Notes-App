@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.appsxone.notesapp.BuildConfig;
@@ -55,6 +56,13 @@ public class HomeActivity extends AppCompatActivity {
         for (int image : imagesArray) {
             flipperImages(image);
         }
+
+        viewFlipper.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                
+            }
+        });
 
         tvCategories.setOnClickListener(new View.OnClickListener() {
             @Override
