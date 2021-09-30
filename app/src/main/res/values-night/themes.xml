@@ -6,12 +6,6 @@
         <item name="android:statusBarColor" tools:targetApi="l">@color/sky_blue</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>
-    <!-- Popup Animation -->
-    <style name="DialogAnimation">
-        <item name="android:windowEnterAnimation">@anim/slide_up</item>
-        <item name="android:windowExitAnimation">@anim/slide_bottom</item>
-    </style>
-
     <!-- Date Picker Dialog Theme -->
     <style name="my_dialog_theme" parent="ThemeOverlay.AppCompat.Dialog">
         <item name="colorAccent">@color/sky_blue</item>             <!-- Header Background -->
@@ -19,5 +13,4 @@
         <item name="android:textColorPrimary">@color/black</item>     <!-- Days of the Month -->
         <item name="android:textColorSecondary">@color/sky_blue</item>  <!-- Days of the Week -->
     </style>
-
 </resources>
