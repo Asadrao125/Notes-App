@@ -58,7 +58,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         holder.imgEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editCategoryDialog(notesArrayList.get(position).note_id, notesArrayList.get(position).note_title,
+                editNotesDialog(notesArrayList.get(position).note_id, notesArrayList.get(position).note_title,
                         notesArrayList.get(position).note_description, notesArrayList.get(position).date,
                         notesArrayList.get(position).time, notesArrayList.get(position).category_id, position);
             }
@@ -134,7 +134,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
         }
     }
 
-    public void editCategoryDialog(int note_id, String title, String description, String date, String time, int categoryId, int pos) {
+    public void editNotesDialog(int note_id, String title, String description, String date, String time, int categoryId, int pos) {
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
         View dialogView = LayoutInflater.from(context).inflate(R.layout.dialog_edit_note, null);
         dialogBuilder.setView(dialogView);
