@@ -125,8 +125,13 @@ public class HomeActivity extends AppCompatActivity {
         cv6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Rate App
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=" + getPackageName())));
+                /* Share App */
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Let me recommed you " + getString(R.string.app_name) +
+                        "\nhttps://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
             }
         });
     }

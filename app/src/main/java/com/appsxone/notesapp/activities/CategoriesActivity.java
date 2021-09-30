@@ -42,6 +42,7 @@ import java.util.Date;
 import java.util.Locale;
 
 public class CategoriesActivity extends AppCompatActivity {
+    ImageView imgBack;
     Database database;
     EditText edtSearch;
     CheckBox cbReverse;
@@ -67,6 +68,14 @@ public class CategoriesActivity extends AppCompatActivity {
         imgMore = findViewById(R.id.imgMore);
         addLayout = findViewById(R.id.addLayout);
         tvCategories = findViewById(R.id.tvCategories);
+        imgBack = findViewById(R.id.imgBack);
+
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
         if (SharedPref.read("reverse", "").equals("true")) {
             cbReverse.setChecked(true);
