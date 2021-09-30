@@ -16,11 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.QuoteActivity;
-import com.appsxone.notesapp.activities.SettingsActivity;
-import com.appsxone.notesapp.activities.TrashActivity;
 import com.appsxone.notesapp.database.Database;
-import com.appsxone.notesapp.ui_design.DesignActivity;
 
 import java.util.ArrayList;
 

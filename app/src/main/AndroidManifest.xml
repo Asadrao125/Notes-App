@@ -12,8 +12,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
-        <activity android:name=".activities.QuoteActivity"></activity>
-        <activity android:name=".ui_design.DesignActivity" />
+        <activity android:name=".activities.QuoteActivity" />
+        <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +24,7 @@
         <activity android:name=".activities.SettingsActivity" />
         <activity android:name=".activities.TrashActivity" />
         <activity android:name=".activities.NewNoteActivity" />
-        <activity android:name=".activities.HomeActivity" />
+        <activity android:name=".activities.CategoriesActivity" />
 
         <receiver
             android:name=".alarm.AlarmReciever"

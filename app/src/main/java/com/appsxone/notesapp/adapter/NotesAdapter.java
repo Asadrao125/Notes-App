@@ -21,7 +21,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.HomeActivity;
 import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Notes;

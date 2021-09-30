@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.appsxone.notesapp.activities.HomeActivity;
+import com.appsxone.notesapp.activities.CategoriesActivity;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
@@ -143,7 +142,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 if (!category.isEmpty()) {
                     database.updateCategory(new Categories(category, id, date, time, isDeleted, completeDate), id);
                     alertDialog.dismiss();
-                    context.startActivity(new Intent(context, HomeActivity.class));
+                    context.startActivity(new Intent(context, CategoriesActivity.class));
                     ((Activity) context).finish();
                 } else {
                     edtCategory.setError("Required");
@@ -168,8 +167,8 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, categoriesArrayList.size());
                 if (categoriesArrayList != null) {
-                    HomeActivity.tvCategories.setText("Categories: " + categoriesArrayList.size());
-                    context.startActivity(new Intent(context, HomeActivity.class));
+                    CategoriesActivity.tvCategories.setText("Categories: " + categoriesArrayList.size());
+                    context.startActivity(new Intent(context, CategoriesActivity.class));
                     ((Activity) context).finish();
                 }
             }

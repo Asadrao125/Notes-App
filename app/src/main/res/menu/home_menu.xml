@@ -3,33 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/btnQuote"
-        android:icon="@drawable/ic_more"
-        android:title="Quotes"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/btnTrash"
-        android:icon="@drawable/ic_more"
-        android:title="Trash"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/btnCustomFilter"
         android:icon="@drawable/ic_more"
         android:title="Custom Filter"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/btnNewDesign"
-        android:icon="@drawable/ic_more"
-        android:title="New Design"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/btnSettings"
-        android:icon="@drawable/ic_more"
-        android:title="Settings"
         app:showAsAction="never" />
 
 </menu>

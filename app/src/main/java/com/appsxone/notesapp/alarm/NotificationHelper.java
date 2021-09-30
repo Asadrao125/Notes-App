@@ -16,7 +16,6 @@ import androidx.core.app.NotificationCompat;
 import com.appsxone.notesapp.activities.QuoteActivity;
 import com.appsxone.notesapp.utils.Quotes;
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.HomeActivity;
 
 public class NotificationHelper extends ContextWrapper {
     public static final String channelID = "channelID";

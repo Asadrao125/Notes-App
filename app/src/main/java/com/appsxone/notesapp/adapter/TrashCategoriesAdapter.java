@@ -1,26 +1,15 @@
 package com.appsxone.notesapp.adapter;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
-import com.appsxone.notesapp.activities.HomeActivity;
-import com.appsxone.notesapp.activities.NewNoteActivity;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
