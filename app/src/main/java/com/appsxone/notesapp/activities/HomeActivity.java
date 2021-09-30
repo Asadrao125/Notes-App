@@ -20,7 +20,6 @@ import com.appsxone.notesapp.model.Notes;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    int position;
     Database database;
     TextView tvPosition;
     ViewFlipper viewFlipper;
