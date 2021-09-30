@@ -6,6 +6,7 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -25,7 +26,9 @@ import com.appsxone.notesapp.model.Notes;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+    int position;
     Database database;
+    TextView tvPosition;
     ViewFlipper viewFlipper;
     CardView cv1, cv2, cv3, cv4, cv5, cv6;
     TextView tvCategories, tvNotes, tvVersionName;
@@ -46,6 +49,7 @@ public class HomeActivity extends AppCompatActivity {
         tvVersionName = findViewById(R.id.tvVersionName);
         database = new Database(this);
         viewFlipper = findViewById(R.id.viewFlipper);
+        tvPosition = findViewById(R.id.tvPosition);
 
         int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
@@ -60,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                Toast.makeText(HomeActivity.this, "" + viewFlipper.getDisplayedChild(), Toast.LENGTH_SHORT).show();
             }
         });
 

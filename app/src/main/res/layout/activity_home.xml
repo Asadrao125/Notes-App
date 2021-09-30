@@ -110,10 +110,28 @@
                     app:cardMaxElevation="5dp"
                     app:cardUseCompatPadding="true">
 
-                    <ViewFlipper
-                        android:id="@+id/viewFlipper"
+                    <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="150dp" />
+                        android:layout_height="wrap_content">
+
+                        <ViewFlipper
+                            android:id="@+id/viewFlipper"
+                            android:layout_width="match_parent"
+                            android:layout_height="150dp" />
+
+                        <TextView
+                            android:id="@+id/tvPosition"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentBottom="true"
+                            android:layout_centerHorizontal="true"
+                            android:background="#66000000"
+                            android:padding="8dp"
+                            android:visibility="gone"
+                            android:text="Position: 0"
+                            android:textColor="@color/white" />
+
+                    </RelativeLayout>
 
                 </androidx.cardview.widget.CardView>
 
