@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
-import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
+import com.squareup.picasso.BuildConfig;
 
 import java.util.ArrayList;
 
@@ -46,6 +46,7 @@ public class HomeActivity extends AppCompatActivity {
 
         int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
+        database.createDatabase();
         setText();
 
         tvVersionName.setText("Version: " + BuildConfig.VERSION_NAME);
