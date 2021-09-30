@@ -23,7 +23,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
                 android:padding="10dp"
-                android:text="Add Note"
+                android:text="Edit Note"
                 android:textColor="@color/white"
                 android:textSize="16sp" />
 
