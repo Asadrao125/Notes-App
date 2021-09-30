@@ -392,6 +392,6 @@
         android:layout_alignParentBottom="true"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Version" />
+        android:text="Version: 1.01" />
 
 </RelativeLayout>
