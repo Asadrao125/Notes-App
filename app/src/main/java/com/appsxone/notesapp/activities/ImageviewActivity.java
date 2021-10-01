@@ -28,15 +28,6 @@ public class ImageviewActivity extends AppCompatActivity {
             }
         });
 
-        if (index == 0) {
-            image.setImageResource(R.drawable.pic1);
-        } else if (index == 1) {
-            image.setImageResource(R.drawable.pic2);
-        } else if (index == 2) {
-            image.setImageResource(R.drawable.pic3);
-        } else if (index == 3) {
-            image.setImageResource(R.drawable.pic4);
-        }
-
+        image.setImageResource(HomeActivity.imagesArray[index]);
     }
 }

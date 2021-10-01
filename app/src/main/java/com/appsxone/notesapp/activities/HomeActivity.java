@@ -20,6 +20,7 @@ import com.appsxone.notesapp.model.Notes;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+    public static int[] imagesArray;
     Database database;
     TextView tvPosition;
     ViewFlipper viewFlipper;
@@ -45,7 +46,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewFlipper);
         tvPosition = findViewById(R.id.tvPosition);
 
-        int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
+        imagesArray = new int[]{R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
         database.createDatabase();
         setText();

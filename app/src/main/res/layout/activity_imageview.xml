@@ -8,44 +8,34 @@
     android:orientation="vertical"
     tools:context=".activities.ImageviewActivity">
 
-    <androidx.cardview.widget.CardView
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="8dp"
-        app:cardElevation="8dp"
-        app:cardMaxElevation="8dp">
+        android:background="@color/black">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <ImageView
+            android:id="@+id/imgBack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@color/black">
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/ripple_effect"
+            android:padding="10dp"
+            android:src="@drawable/ic_back" />
 
-            <ImageView
-                android:id="@+id/imgBack"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="10dp"
-                android:background="@drawable/ripple_effect"
-                android:padding="10dp"
-                android:src="@drawable/ic_back"
-                app:tint="@color/sky_blue" />
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@id/imgBack"
+            android:layout_toRightOf="@id/imgBack"
+            android:padding="15dp"
+            android:text="Image"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
 
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toEndOf="@id/imgBack"
-                android:layout_toRightOf="@id/imgBack"
-                android:padding="15dp"
-                android:text="Image"
-                android:textColor="@color/sky_blue"
-                android:textSize="18sp" />
-
-        </RelativeLayout>
-
-    </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 
     <ImageView
         android:id="@+id/image"
