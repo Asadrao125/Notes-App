@@ -47,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
 
         int[] imagesArray = {R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
+        database.createDatabase();
         setText();
 
         tvVersionName.setText("Version: " + BuildConfig.VERSION_NAME);
