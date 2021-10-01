@@ -283,13 +283,13 @@ public class CategoriesActivity extends AppCompatActivity {
         } else if (SharedPref.read("key", "").equals("D")) {
             categoriesArrayList = database.getAllDailyCategories(DateFunctions.getCurrentDate(), 0);
         } else if (SharedPref.read("key", "").equals("W")) {
-            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCompleteDate(),
                     DateFunctions.getCalculatedDate("", -7), 0);
         } else if (SharedPref.read("key", "").equals("M")) {
-            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCompleteDate(),
                     DateFunctions.getCalculatedDate("", -30), 0);
         } else if (SharedPref.read("key", "").equals("Y")) {
-            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCurrentDate(),
+            categoriesArrayList = database.getAllWeeklyMonthlyYearlyCategories(DateFunctions.getCompleteDate(),
                     DateFunctions.getCalculatedDate("", -365), 0);
         } else {
             categoriesArrayList = database.getAllCategories(0);
