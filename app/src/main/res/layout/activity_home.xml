@@ -127,9 +127,9 @@
                             android:layout_centerHorizontal="true"
                             android:background="#66000000"
                             android:padding="8dp"
-                            android:visibility="gone"
                             android:text="Position: 0"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:visibility="gone" />
 
                     </RelativeLayout>
 
