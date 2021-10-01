@@ -41,6 +41,7 @@ public class HomeActivity extends AppCompatActivity {
         tvNotes = findViewById(R.id.tvNotes);
         tvVersionName = findViewById(R.id.tvVersionName);
         database = new Database(this);
+        database.createDatabase();
         viewFlipper = findViewById(R.id.viewFlipper);
         tvPosition = findViewById(R.id.tvPosition);
 
