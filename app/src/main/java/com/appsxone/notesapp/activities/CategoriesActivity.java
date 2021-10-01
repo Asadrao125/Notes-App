@@ -47,11 +47,11 @@ public class CategoriesActivity extends AppCompatActivity {
     EditText edtSearch;
     CheckBox cbReverse;
     LinearLayout addLayout;
-    public static LinearLayout noDataLayout;
     RecyclerView rvCategories;
     ImageView imgFilter, imgMore;
     public static TextView tvCategories;
     LinearLayoutManager linearLayoutManager;
+    public static LinearLayout noDataLayout;
     ArrayList<Categories> categoriesArrayList = new ArrayList<>();
 
     @Override
