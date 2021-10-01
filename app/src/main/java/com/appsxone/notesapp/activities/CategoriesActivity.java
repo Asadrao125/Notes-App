@@ -108,7 +108,6 @@ public class CategoriesActivity extends AppCompatActivity {
         rvCategories.setHasFixedSize(true);
         noDataLayout = findViewById(R.id.noDataLayout);
         imgFilter = findViewById(R.id.imgFilter);
-        SharedPref.init(this);
         edtSearch = findViewById(R.id.edtSearch);
 
         addLayout.setOnClickListener(new View.OnClickListener() {
