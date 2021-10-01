@@ -42,311 +42,325 @@
 
     </androidx.cardview.widget.CardView> <!-- TOOLBAR -->
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvAboutApp"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <View
-                android:layout_width="6dp"
-                android:layout_height="70dp"
-                android:background="@color/sky_blue" />
-
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvAboutApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_effect"
-                android:padding="15dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-                <ImageView
-                    android:id="@+id/img1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_fwd_arrow"
-                    app:tint="@color/sky_blue" />
-
-                <ImageView
-                    android:id="@+id/imgAbout"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_about"
-                    app:tint="@color/sky_blue" />
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@+id/img1"
-                    android:layout_toLeftOf="@+id/img1"
-                    android:layout_toEndOf="@id/imgAbout"
-                    android:layout_toRightOf="@id/imgAbout"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tvCategoryName"
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="70dp"
+                        android:background="@color/sky_blue" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="About App"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/ripple_effect"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:id="@+id/tvNotesSize"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:text="What is notes app ?" />
+                        <ImageView
+                            android:id="@+id/img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_fwd_arrow"
+                            app:tint="@color/sky_blue" />
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgAbout"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_about"
+                            app:tint="@color/sky_blue" />
 
-            </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toStartOf="@+id/img1"
+                            android:layout_toLeftOf="@+id/img1"
+                            android:layout_toEndOf="@id/imgAbout"
+                            android:layout_toRightOf="@id/imgAbout"
+                            android:orientation="vertical">
 
-        </RelativeLayout>
+                            <TextView
+                                android:id="@+id/tvCategoryName"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="About App"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-    </androidx.cardview.widget.CardView> <!-- ABOUT APP -->
+                            <TextView
+                                android:id="@+id/tvNotesSize"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:text="What is notes app ?" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvRateApp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+                        </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    </RelativeLayout>
 
-            <View
-                android:layout_width="6dp"
-                android:layout_height="70dp"
-                android:background="@color/sky_blue" />
+                </RelativeLayout>
 
-            <RelativeLayout
+            </androidx.cardview.widget.CardView> <!-- ABOUT APP -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvRateApp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_effect"
-                android:padding="15dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-                <ImageView
-                    android:id="@+id/img2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_fwd_arrow"
-                    app:tint="@color/sky_blue" />
-
-
-                <ImageView
-                    android:id="@+id/imgRate"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_rate"
-                    app:tint="@color/sky_blue" />
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@+id/img2"
-                    android:layout_toLeftOf="@+id/img2"
-                    android:layout_toEndOf="@id/imgRate"
-                    android:layout_toRightOf="@id/imgRate"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="70dp"
+                        android:background="@color/sky_blue" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Rate App"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/ripple_effect"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:text="Rate this app on playstore" />
+                        <ImageView
+                            android:id="@+id/img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_fwd_arrow"
+                            app:tint="@color/sky_blue" />
 
-                </LinearLayout>
 
-            </RelativeLayout>
+                        <ImageView
+                            android:id="@+id/imgRate"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_rate"
+                            app:tint="@color/sky_blue" />
 
-        </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toStartOf="@+id/img2"
+                            android:layout_toLeftOf="@+id/img2"
+                            android:layout_toEndOf="@id/imgRate"
+                            android:layout_toRightOf="@id/imgRate"
+                            android:orientation="vertical">
 
-    </androidx.cardview.widget.CardView> <!-- RATE APP -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Rate App"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvFeedback"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:text="Rate this app on playstore" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                        </LinearLayout>
 
-            <View
-                android:layout_width="6dp"
-                android:layout_height="70dp"
-                android:background="@color/sky_blue" />
+                    </RelativeLayout>
 
-            <RelativeLayout
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView> <!-- RATE APP -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvFeedback"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_effect"
-                android:padding="15dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-                <ImageView
-                    android:id="@+id/imgEdit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_fwd_arrow"
-                    app:tint="@color/sky_blue" />
-
-                <ImageView
-                    android:id="@+id/imgFeedback"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_feedback"
-                    app:tint="@color/sky_blue" />
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@+id/imgEdit"
-                    android:layout_toLeftOf="@+id/imgEdit"
-                    android:layout_toEndOf="@id/imgFeedback"
-                    android:layout_toRightOf="@id/imgFeedback"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="70dp"
+                        android:background="@color/sky_blue" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Feedback"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/ripple_effect"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:text="Give your feedback and suggestions" />
+                        <ImageView
+                            android:id="@+id/imgEdit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_fwd_arrow"
+                            app:tint="@color/sky_blue" />
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgFeedback"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_feedback"
+                            app:tint="@color/sky_blue" />
 
-            </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toStartOf="@+id/imgEdit"
+                            android:layout_toLeftOf="@+id/imgEdit"
+                            android:layout_toEndOf="@id/imgFeedback"
+                            android:layout_toRightOf="@id/imgFeedback"
+                            android:orientation="vertical">
 
-        </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Feedback"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-    </androidx.cardview.widget.CardView> <!-- FEEDBACK -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:text="Give your feedback and suggestions" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cvErase"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="5dp"
-        app:cardUseCompatPadding="true">
+                        </LinearLayout>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+                    </RelativeLayout>
 
-            <View
-                android:layout_width="6dp"
-                android:layout_height="70dp"
-                android:background="@color/sky_blue" />
+                </RelativeLayout>
 
-            <RelativeLayout
+            </androidx.cardview.widget.CardView> <!-- FEEDBACK -->
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvErase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/ripple_effect"
-                android:padding="15dp">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                app:cardUseCompatPadding="true">
 
-                <ImageView
-                    android:id="@+id/imgFwd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="5dp"
-                    android:src="@drawable/ic_fwd_arrow"
-                    app:tint="@color/sky_blue" />
-
-                <ImageView
-                    android:id="@+id/imgErase"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_erase"
-                    app:tint="@color/sky_blue" />
-
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@+id/imgFwd"
-                    android:layout_toLeftOf="@+id/imgFwd"
-                    android:layout_toEndOf="@id/imgErase"
-                    android:layout_toRightOf="@id/imgErase"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="70dp"
+                        android:background="@color/sky_blue" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Erase All Data"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                        android:background="@drawable/ripple_effect"
+                        android:padding="15dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ellipsize="end"
-                        android:maxLines="1"
-                        android:minLines="1"
-                        android:text="All the Categories and Notes will be deleted" />
+                        <ImageView
+                            android:id="@+id/imgFwd"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="5dp"
+                            android:src="@drawable/ic_fwd_arrow"
+                            app:tint="@color/sky_blue" />
 
-                </LinearLayout>
+                        <ImageView
+                            android:id="@+id/imgErase"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/ic_erase"
+                            app:tint="@color/sky_blue" />
 
-            </RelativeLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_toStartOf="@+id/imgFwd"
+                            android:layout_toLeftOf="@+id/imgFwd"
+                            android:layout_toEndOf="@id/imgErase"
+                            android:layout_toRightOf="@id/imgErase"
+                            android:orientation="vertical">
 
-        </RelativeLayout>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Erase All Data"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
 
-    </androidx.cardview.widget.CardView> <!-- Erase All Data -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:minLines="1"
+                                android:text="All the Categories and Notes will be deleted" />
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView> <!-- Erase All Data -->
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
