@@ -76,12 +76,14 @@
                 android:id="@+id/rbYesterday"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yesterday" />
+                android:text="Yesterday"
+                android:visibility="gone" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/sky_blue" />
+                android:background="@color/sky_blue"
+                android:visibility="gone" />
 
             <RadioButton
                 android:id="@+id/rbWeekly"
