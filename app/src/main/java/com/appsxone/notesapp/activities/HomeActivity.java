@@ -11,11 +11,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
+import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
-import com.squareup.picasso.BuildConfig;
 
 import java.util.ArrayList;
 
