@@ -188,7 +188,6 @@ public class CategoriesActivity extends AppCompatActivity {
                 String myFormat = "dd-MM-yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 categoriesArrayList = database.getAllDailyCategories(sdf.format(myCalendar.getTime()), 0);
-
                 if (categoriesArrayList != null) {
                     rvCategories.setAdapter(new CategoriesAdapter(CategoriesActivity.this, categoriesArrayList));
                     rvCategories.setVisibility(View.VISIBLE);
@@ -199,7 +198,6 @@ public class CategoriesActivity extends AppCompatActivity {
                     rvCategories.setVisibility(View.GONE);
                     tvCategories.setText("Categories: 0");
                 }
-
             }
         }, myCalendar.get(Calendar.YEAR), myCalendar.get(Calendar.MONTH), myCalendar.get(Calendar.DAY_OF_MONTH)).show();
     }
