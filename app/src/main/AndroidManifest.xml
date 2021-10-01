@@ -12,6 +12,7 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
+        <activity android:name=".activities.ImageviewActivity"></activity>
         <activity android:name=".activities.QuoteActivity" />
         <activity android:name=".activities.HomeActivity" />
         <activity android:name=".activities.SplashActivity">

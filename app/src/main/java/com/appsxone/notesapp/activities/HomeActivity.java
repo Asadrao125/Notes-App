@@ -59,7 +59,9 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(HomeActivity.this, "" + viewFlipper.getDisplayedChild(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), ImageviewActivity.class);
+                intent.putExtra("index", viewFlipper.getDisplayedChild());
+                startActivity(intent);
             }
         });
 
