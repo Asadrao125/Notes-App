@@ -44,11 +44,12 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
 
             <ImageView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:src="@drawable/logo" />
@@ -66,50 +67,78 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="1) This is a simple application to manage your notes."
-                android:textSize="16sp" />
+                android:text="=> This is a simple application to manage notes."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="2) It saves notes on the basis of categories."
-                android:textSize="16sp" />
+                android:text="=> It saves notes on the basis of categories."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="3) This app is complete OFFLINE."
-                android:textSize="16sp" />
+                android:text="=> This app is complete offline."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="4) No login and signup required."
-                android:textSize="16sp" />
+                android:text="=> No login and signup required."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="5) It has many FILTER options through which you can filter all categories."
-                android:textSize="16sp" />
+                android:text="=> It has many filter options."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="6) It has REVERSE option."
-                android:textSize="16sp" />
+                android:text="=> It has reverse option."
+                android:textSize="14sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:text="7) It has soft and Hard delete feature."
-                android:textSize="16sp" />
+                android:text="=> It has soft and hard delete option."
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="=> It has notification option with quote."
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="=> It has feedback option using gmail."
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="=> It has erase all data option."
+                android:textSize="14sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="=> It has image slider option."
+                android:textSize="14sp" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvBtnSearch"
