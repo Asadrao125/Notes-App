@@ -100,10 +100,6 @@ public class CategoriesActivity extends AppCompatActivity {
             }
         });
 
-        SetAlarm.setAlarm(this, 8, 0, 1, "Good Morning");
-        SetAlarm.setAlarm(this, 14, 0, 2, "Good Evening");
-        SetAlarm.setAlarm(this, 21, 0, 3, "Good Night");
-
         rvCategories.setLayoutManager(linearLayoutManager);
         rvCategories.setHasFixedSize(true);
         noDataLayout = findViewById(R.id.noDataLayout);

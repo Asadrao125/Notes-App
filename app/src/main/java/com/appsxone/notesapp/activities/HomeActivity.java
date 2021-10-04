@@ -13,6 +13,7 @@ import android.widget.ViewFlipper;
 
 import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
+import com.appsxone.notesapp.alarm.SetAlarm;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
@@ -56,6 +57,10 @@ public class HomeActivity extends AppCompatActivity {
         for (int image : imagesArray) {
             flipperImages(image);
         }
+
+        SetAlarm.setAlarm(this, 8, 0, 1, "Good Morning");
+        SetAlarm.setAlarm(this, 14, 0, 2, "Good Evening");
+        SetAlarm.setAlarm(this, 21, 0, 3, "Good Night");
 
         viewFlipper.setOnClickListener(new View.OnClickListener() {
             @Override
