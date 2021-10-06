@@ -128,8 +128,8 @@ public class HomeActivity extends AppCompatActivity {
         cv6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* Share App */
-
+                /* TODO  */
+                startActivity(new Intent(getApplicationContext(), ToDoActivity.class));
             }
         });
     }

@@ -9,6 +9,7 @@ import android.widget.Toast;
 
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
+import com.appsxone.notesapp.model.ToDoModel;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -388,6 +389,133 @@ public class Database {
     public void deleteNotes() {
         open();
         String query = "delete from notes";
+        sqLiteDatabase.execSQL(query);
+        close();
+    }
+
+
+    //============================ START CUSTOM METHODS FOR TODO TABLE ====================================
+
+    /* CREATE TABLE "to_do" (
+	"id"	INTEGER,
+	"title"	TEXT,
+	"isCompleted"	INTEGER,
+	"isActive"	INTEGER,
+	"isDeletedisDeleted"	INTEGER,
+	"date"	TEXT,
+	"time"	TEXT,
+	"completeDate"	TEXT,
+	PRIMARY KEY("id" AUTOINCREMENT));
+	*/
+
+    public long saveToDO(ToDoModel toDoModel) {
+        long rowId = -1;
+        try {
+            open();
+            ContentValues cv = new ContentValues();
+            cv.put("title", toDoModel.title);
+            cv.put("isCompleted", toDoModel.isCompleted);
+            cv.put("isActive", toDoModel.isActive);
+            cv.put("isDeleted", toDoModel.isDeleted);
+            cv.put("date", toDoModel.date);
+            cv.put("time", toDoModel.time);
+            cv.put("completeDate", toDoModel.completeDate);
+            rowId = sqLiteDatabase.insert("to_do", null, cv);
+            close();
+        } catch (SQLiteException e) {
+            Toast.makeText(activity, "Database exception", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+
+        System.out.println("-- Record inserted rowId : " + rowId);
+        return rowId;
+    }
+
+    public ArrayList<ToDoModel> getAllToDo() {
+        open();
+        ArrayList<ToDoModel> categoryBeans = new ArrayList<>();
+        ToDoModel temp;
+        String query = "select * from to_do";
+
+        System.out.println("--query in getAllAttendance : " + query);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String title = cursor.getString(cursor.getColumnIndex("title"));
+                int isCompleted = cursor.getInt(cursor.getColumnIndex("isCompleted"));
+                int isActive = cursor.getInt(cursor.getColumnIndex("isActive"));
+                int isDeleted = cursor.getInt(cursor.getColumnIndex("isDeleted"));
+                String date = cursor.getString(cursor.getColumnIndex("date"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                String completeDate = cursor.getString(cursor.getColumnIndex("completeDate"));
+                temp = new ToDoModel(id, title, isCompleted, isActive, isDeleted, date, time, completeDate);
+                categoryBeans.add(temp);
+                temp = null;
+            }
+            while (cursor.moveToNext());
+            close();
+            return categoryBeans;
+        }
+        close();
+        return null;
+    }
+
+    public ArrayList<ToDoModel> getCompletedUnCompleteToDo(int completed) {
+        open();
+        ArrayList<ToDoModel> categoryBeans = new ArrayList<>();
+        ToDoModel temp;
+        String query = "select * from to_do WHERE isCompleted = '" + completed + "'";
+
+        System.out.println("--query in getAllAttendance : " + query);
+        Cursor cursor = sqLiteDatabase.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                int id = cursor.getInt(cursor.getColumnIndex("id"));
+                String title = cursor.getString(cursor.getColumnIndex("title"));
+                int isCompleted = cursor.getInt(cursor.getColumnIndex("isCompleted"));
+                int isActive = cursor.getInt(cursor.getColumnIndex("isActive"));
+                int isDeleted = cursor.getInt(cursor.getColumnIndex("isDeleted"));
+                String date = cursor.getString(cursor.getColumnIndex("date"));
+                String time = cursor.getString(cursor.getColumnIndex("time"));
+                String completeDate = cursor.getString(cursor.getColumnIndex("completeDate"));
+                temp = new ToDoModel(id, title, isCompleted, isActive, isDeleted, date, time, completeDate);
+                categoryBeans.add(temp);
+                temp = null;
+            }
+            while (cursor.moveToNext());
+            close();
+            return categoryBeans;
+        }
+        close();
+        return null;
+    }
+
+    public void updateTODO(ToDoModel toDoModel, int id) {
+        open();
+        ContentValues dataToUpdate = new ContentValues();
+        dataToUpdate.put("title", toDoModel.title);
+        dataToUpdate.put("isCompleted", toDoModel.isCompleted);
+        dataToUpdate.put("isActive", toDoModel.isActive);
+        dataToUpdate.put("isDeleted", toDoModel.isDeleted);
+        dataToUpdate.put("date", toDoModel.date);
+        dataToUpdate.put("time", toDoModel.time);
+        dataToUpdate.put("completeDate", toDoModel.completeDate);
+        String where = "id" + "=" + "'" + id + "'";
+        try {
+            int rows = sqLiteDatabase.update("to_do", dataToUpdate, where, null);
+            System.out.println("-- rows updated: " + rows);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        close();
+    }
+
+    public void deleteToDo(int id) {
+        open();
+        String query = "delete from to_do WHERE id = '" + id + "'";
         sqLiteDatabase.execSQL(query);
         close();
     }
