@@ -33,13 +33,13 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        database = new Database(this);
         imgBack = findViewById(R.id.imgBack);
-        cvFeedback = findViewById(R.id.cvFeedback);
+        cvErase = findViewById(R.id.cvErase);
         cvRateApp = findViewById(R.id.cvRateApp);
         cvAboutApp = findViewById(R.id.cvAboutApp);
-        cvErase = findViewById(R.id.cvErase);
         cvShareApp = findViewById(R.id.cvShareApp);
-        database = new Database(this);
+        cvFeedback = findViewById(R.id.cvFeedback);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
