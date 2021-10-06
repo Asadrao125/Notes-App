@@ -159,11 +159,11 @@ public class HomeActivity extends AppCompatActivity {
         ArrayList<ToDoModel> toDoModelArrayList = database.getAllToDo();
 
         if (categoriesArrayList != null) {
-            tvCategories.setText("Categories: " + categoriesArrayList.size());
+            tvCategories.setText("Category: " + categoriesArrayList.size());
         }
 
         if (notesArrayList != null) {
-            tvNotes.setText("Notes: " + notesArrayList.size());
+            tvNotes.setText("Note: " + notesArrayList.size());
         }
 
         if (toDoModelArrayList != null) {

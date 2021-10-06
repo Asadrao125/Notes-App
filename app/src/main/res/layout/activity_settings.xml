@@ -87,8 +87,9 @@
 
                         <ImageView
                             android:id="@+id/imgAbout"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_about"
                             app:tint="@color/sky_blue" />
 
@@ -166,8 +167,9 @@
 
                         <ImageView
                             android:id="@+id/imgRate"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_rate"
                             app:tint="@color/sky_blue" />
 
@@ -242,8 +244,9 @@
 
                         <ImageView
                             android:id="@+id/imgFeedback"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_feedback"
                             app:tint="@color/sky_blue" />
 
@@ -318,8 +321,9 @@
 
                         <ImageView
                             android:id="@+id/imgErase"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/ic_erase"
                             app:tint="@color/sky_blue" />
 
@@ -357,7 +361,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView> <!-- Erase All Data -->
+            </androidx.cardview.widget.CardView> <!-- ERASE ALL DATA -->
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cvShareApp"
@@ -394,8 +398,9 @@
 
                         <ImageView
                             android:id="@+id/imgShare"
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_centerVertical="true"
                             android:src="@drawable/share"
                             app:tint="@color/sky_blue" />
 
@@ -434,7 +439,7 @@
 
                 </RelativeLayout>
 
-            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView> <!-- SHARE APP -->
 
         </LinearLayout>
 

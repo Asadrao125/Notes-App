@@ -69,7 +69,7 @@
                         android:background="@drawable/ripple_effect"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Categories: 0"
+                        android:text="Category: 0"
                         android:textColor="@color/black" />
 
                     <View
@@ -85,7 +85,7 @@
                         android:background="@drawable/ripple_effect"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="Notes: 0"
+                        android:text="Note: 0"
                         android:textColor="@color/black" />
 
                     <View
@@ -101,7 +101,7 @@
                         android:background="@drawable/ripple_effect"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="TODOL: 0"
+                        android:text="TODO: 0"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
@@ -301,59 +301,6 @@
                     </androidx.cardview.widget.CardView>
 
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cv4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:elevation="5dp"
-                        app:cardCornerRadius="10dp"
-                        app:cardElevation="5dp"
-                        app:cardMaxElevation="5dp"
-                        app:cardUseCompatPadding="true">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@color/color3">
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="90dp"
-                                android:background="@drawable/ripple_effect"
-                                android:gravity="center"
-                                android:orientation="vertical"
-                                android:padding="10dp">
-
-                                <ImageView
-                                    android:layout_width="35dp"
-                                    android:layout_height="35dp"
-                                    android:layout_gravity="center"
-                                    android:src="@drawable/trash"
-                                    app:tint="@color/white" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="5dp"
-                                    android:text="Trash"
-                                    android:textColor="@color/white" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </androidx.cardview.widget.CardView>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:weightSum="2">
-
-                    <androidx.cardview.widget.CardView
                         android:id="@+id/cv6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -390,6 +337,59 @@
                                     android:layout_gravity="center"
                                     android:layout_marginTop="5dp"
                                     android:text="To Do's"
+                                    android:textColor="@color/white" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cv4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:elevation="5dp"
+                        app:cardCornerRadius="10dp"
+                        app:cardElevation="5dp"
+                        app:cardMaxElevation="5dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/color3">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="90dp"
+                                android:background="@drawable/ripple_effect"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <ImageView
+                                    android:layout_width="35dp"
+                                    android:layout_height="35dp"
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/trash"
+                                    app:tint="@color/white" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:layout_marginTop="5dp"
+                                    android:text="Trash"
                                     android:textColor="@color/white" />
 
                             </LinearLayout>

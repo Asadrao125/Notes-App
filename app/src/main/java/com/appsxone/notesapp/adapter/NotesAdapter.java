@@ -195,7 +195,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
                 notifyItemRangeChanged(pos, notesArrayList.size());
                 dialog.dismiss();
                 if (notesArrayList != null) {
-                    NotesActivity.tvNotes.setText("Notes: " + notesArrayList.size());
+                    NotesActivity.tvNotes.setText("Note: " + notesArrayList.size());
                 }
             }
         });

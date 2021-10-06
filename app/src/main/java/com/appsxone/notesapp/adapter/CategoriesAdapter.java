@@ -85,12 +85,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
 
         ArrayList<Notes> notesArrayList = database.getAllNotes(categoriesArrayList.get(position).category_id);
         if (notesArrayList != null) {
-            int size = notesArrayList.size();
-            if (size > 1) {
-                holder.tvNotesSize.setText(size + " Notes");
-            } else if (size == 1) {
-                holder.tvNotesSize.setText(size + " Note");
-            }
+            holder.tvNotesSize.setText("Note: " + notesArrayList.size());
         }
     }
 
@@ -167,7 +162,7 @@ public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.My
                 notifyItemRemoved(pos);
                 notifyItemRangeChanged(pos, categoriesArrayList.size());
                 if (categoriesArrayList != null) {
-                    CategoriesActivity.tvCategories.setText("Categories: " + categoriesArrayList.size());
+                    CategoriesActivity.tvCategories.setText("Category: " + categoriesArrayList.size());
                     context.startActivity(new Intent(context, CategoriesActivity.class));
                     ((Activity) context).finish();
                 }
