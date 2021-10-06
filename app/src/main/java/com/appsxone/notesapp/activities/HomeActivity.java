@@ -17,6 +17,7 @@ import com.appsxone.notesapp.alarm.SetAlarm;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
+import com.appsxone.notesapp.model.ToDoModel;
 
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
     TextView tvPosition;
     ViewFlipper viewFlipper;
     CardView cv1, cv2, cv3, cv4, cv5, cv6;
-    TextView tvCategories, tvNotes, tvVersionName;
+    TextView tvCategories, tvNotes, tvVersionName, tvToDo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         database.createDatabase();
         viewFlipper = findViewById(R.id.viewFlipper);
         tvPosition = findViewById(R.id.tvPosition);
+        tvToDo = findViewById(R.id.tvToDo);
 
         imagesArray = new int[]{R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
@@ -82,6 +84,13 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), NotesActivity.class));
+            }
+        });
+
+        tvToDo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ToDoActivity.class));
             }
         });
 
@@ -147,6 +156,7 @@ public class HomeActivity extends AppCompatActivity {
     private void setText() {
         ArrayList<Categories> categoriesArrayList = database.getAllCategories(0);
         ArrayList<Notes> notesArrayList = database.getAllNotes();
+        ArrayList<ToDoModel> toDoModelArrayList = database.getAllToDo();
 
         if (categoriesArrayList != null) {
             tvCategories.setText("Categories: " + categoriesArrayList.size());
@@ -154,6 +164,10 @@ public class HomeActivity extends AppCompatActivity {
 
         if (notesArrayList != null) {
             tvNotes.setText("Notes: " + notesArrayList.size());
+        }
+
+        if (toDoModelArrayList != null) {
+            tvToDo.setText("TODO: " + toDoModelArrayList.size());
         }
     }
 

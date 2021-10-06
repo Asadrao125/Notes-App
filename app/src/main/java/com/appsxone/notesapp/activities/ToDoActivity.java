@@ -74,7 +74,7 @@ public class ToDoActivity extends AppCompatActivity {
                     toDoModelArrayList = database.getCompletedUnCompleteToDo(1);
                     if (toDoModelArrayList != null) {
                         rvToDo.setAdapter(new ToDoAdapter(ToDoActivity.this, toDoModelArrayList));
-                        tvSize.setText("TODO's: " + toDoModelArrayList.size());
+                        tvSize.setText("TODO: " + toDoModelArrayList.size());
                     }
                 } else {
                     setDapter();
@@ -130,7 +130,7 @@ public class ToDoActivity extends AppCompatActivity {
         toDoModelArrayList = database.getAllToDo();
         if (toDoModelArrayList != null) {
             rvToDo.setAdapter(new ToDoAdapter(this, toDoModelArrayList));
-            tvSize.setText("TODO's " + toDoModelArrayList.size());
+            tvSize.setText("TODO: " + toDoModelArrayList.size());
         }
     }
 }

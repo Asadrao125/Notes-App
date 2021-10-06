@@ -75,7 +75,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> 
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, toDoModelArrayList.size());
                 if (toDoModelArrayList != null) {
-                    ToDoActivity.tvSize.setText("TODO's: " + toDoModelArrayList.size());
+                    ToDoActivity.tvSize.setText("TODO: " + toDoModelArrayList.size());
                 }
             }
         });

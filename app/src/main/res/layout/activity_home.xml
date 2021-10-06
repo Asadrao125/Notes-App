@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:weightSum="2">
+                    android:weightSum="3">
 
                     <TextView
                         android:id="@+id/tvCategories"
@@ -69,7 +69,7 @@
                         android:background="@drawable/ripple_effect"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="0 Categories"
+                        android:text="Categories: 0"
                         android:textColor="@color/black" />
 
                     <View
@@ -85,7 +85,23 @@
                         android:background="@drawable/ripple_effect"
                         android:gravity="center"
                         android:padding="10dp"
-                        android:text="0 Notes"
+                        android:text="Notes: 0"
+                        android:textColor="@color/black" />
+
+                    <View
+                        android:layout_width="1px"
+                        android:layout_height="match_parent"
+                        android:background="@color/sky_blue" />
+
+                    <TextView
+                        android:id="@+id/tvToDo"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/ripple_effect"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="TODOL: 0"
                         android:textColor="@color/black" />
 
                 </LinearLayout>
