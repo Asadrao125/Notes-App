@@ -18,6 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
 import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
@@ -25,7 +26,7 @@ import com.appsxone.notesapp.model.Categories;
 public class SettingsActivity extends AppCompatActivity {
     ImageView imgBack;
     Database database;
-    CardView cvFeedback, cvRateApp, cvAboutApp, cvErase;
+    CardView cvFeedback, cvRateApp, cvAboutApp, cvErase, cvShareApp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
         cvRateApp = findViewById(R.id.cvRateApp);
         cvAboutApp = findViewById(R.id.cvAboutApp);
         cvErase = findViewById(R.id.cvErase);
+        cvShareApp = findViewById(R.id.cvShareApp);
         database = new Database(this);
 
         imgBack.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +73,18 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 confirmationDiaog();
+            }
+        });
+
+        cvShareApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Let me recommed you " + getString(R.string.app_name) +
+                        "\nhttps://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
             }
         });
     }

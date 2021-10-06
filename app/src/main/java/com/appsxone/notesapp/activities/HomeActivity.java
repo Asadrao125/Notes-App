@@ -129,12 +129,7 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 /* Share App */
-                Intent sendIntent = new Intent();
-                sendIntent.setAction(Intent.ACTION_SEND);
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Let me recommed you " + getString(R.string.app_name) +
-                        "\nhttps://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
-                sendIntent.setType("text/plain");
-                startActivity(sendIntent);
+
             }
         });
     }
