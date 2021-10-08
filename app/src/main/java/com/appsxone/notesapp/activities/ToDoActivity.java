@@ -126,7 +126,6 @@ public class ToDoActivity extends AppCompatActivity {
     }
 
     private void setDapter() {
-        toDoModelArrayList.clear();
         toDoModelArrayList = database.getAllToDo();
         if (toDoModelArrayList != null) {
             rvToDo.setAdapter(new ToDoAdapter(this, toDoModelArrayList));
