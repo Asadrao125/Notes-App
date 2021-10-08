@@ -8,8 +8,10 @@ public class Quotes {
         ArrayList<String> stringArrayList = new ArrayList<>();
         stringArrayList.clear();
         stringArrayList.add("Do not confuse motion and progress. A rocking horse keeps moving but does not make any progress");
+        stringArrayList.add("Grow through what you go through");
+        stringArrayList.add("Don’t mistake my kindness for weakness");
         stringArrayList.add("I don’t know the key to success, but the key to failure is trying to please everybody");
-        stringArrayList.add("Be yourself; everyone else is already taken");
+        stringArrayList.add("Be yourself everyone else is already taken");
         stringArrayList.add("There is a great difference between worry and concern. A worried person sees a problem, and a concerned person solves a problem");
         stringArrayList.add("Put the past behind you, the present moment is all that matters, in the life of those who want to be happy");
         stringArrayList.add("Don't try to be perfect. Just try to be better than you were yesterday");
@@ -36,8 +38,10 @@ public class Quotes {
         ArrayList<String> stringArrayList = new ArrayList<>();
         stringArrayList.clear();
         stringArrayList.add("Do not confuse motion and progress. A rocking horse keeps moving but does not make any progress");
+        stringArrayList.add("Grow through what you go through");
+        stringArrayList.add("Don’t mistake my kindness for weakness");
         stringArrayList.add("I don’t know the key to success, but the key to failure is trying to please everybody");
-        stringArrayList.add("Be yourself, everyone else is already taken");
+        stringArrayList.add("Be yourself everyone else is already taken");
         stringArrayList.add("There is a great difference between worry and concern. A worried person sees a problem, and a concerned person solves a problem");
         stringArrayList.add("Put the past behind you, the present moment is all that matters, in the life of those who want to be happy");
         stringArrayList.add("Don't try to be perfect. Just try to be better than you were yesterday");

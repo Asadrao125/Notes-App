@@ -18,4 +18,17 @@
     <color name="color7">#5B69F1</color>
     <color name="color8">#36BF4D</color>
     <color name="color9">#8A72E3</color>
+
+    <color name="transparent">#66000000</color>
+
+    <color name="color11">#6647C9A6</color>
+    <color name="color22">#6623B4C1</color>
+    <color name="color33">#662FAEFD</color>
+    <color name="color44">#66E38DF7</color>
+    <color name="color55">#66FD7378</color>
+    <color name="color66">#66C3C63B</color>
+    <color name="color77">#665B69F1</color>
+    <color name="color88">#6636BF4D</color>
+    <color name="color99">#668A72E3</color>
+
 </resources>

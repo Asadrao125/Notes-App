@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appsxone.notesapp.R;
+import com.appsxone.notesapp.activities.MakeImageActivity;
 import com.appsxone.notesapp.database.Database;
 
 import java.util.ArrayList;
@@ -70,6 +71,10 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder
                         sendIntent.setType("text/plain");
                         context.startActivity(sendIntent);
                         return true;
+                    case R.id.btnMakeImage:
+                        Intent intent = new Intent(context, MakeImageActivity.class);
+                        intent.putExtra("quote", quoteList.get(pos));
+                        context.startActivity(intent);
                 }
                 return false;
             }
