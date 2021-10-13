@@ -83,22 +83,11 @@ public class MakeImageActivity extends AppCompatActivity {
         colorsArray = new int[]{R.color.color11, R.color.color22, R.color.color33, R.color.color44, R.color.color55,
                 R.color.color66, R.color.color77, R.color.color88, R.color.color99, R.color.transparent};
 
-        fontFamilyArray = new String[]{"fonts/roboto_black.ttf",
-                "fonts/roboto_blackitalic.ttf",
-                "fonts/roboto_boldcondensed.ttf",
-                "fonts/roboto_bold.ttf",
-                "fonts/roboto_boldcondensedItalic.ttf",
-                "fonts/roboto-boldItalic.ttf",
-                "fonts/roboto-condensed.ttf",
-                "fonts/roboto-condenseditalic.ttf",
-                "fonts/roboto-italic.ttf",
-                "fonts/roboto-light.ttf",
-                "fonts/roboto-LightItalic.ttf",
-                "fonts/Roboto-Medium.ttf",
-                "fonts/Roboto-MediumItalic.ttf",
-                "fonts/Roboto-Regular.ttf",
-                "fonts/Roboto-Thin.ttf",
-                "fonts/Roboto-ThinItalic.ttf"};
+        fontFamilyArray = new String[]{"roboto_black.ttf", "roboto_blackitalic.ttf", "roboto_boldcondensed.ttf",
+                "roboto_bold.ttf", "roboto_boldcondensedItalic.ttf", "roboto-boldItalic.ttf",
+                "roboto-condensed.ttf", "roboto-condenseditalic.ttf", "roboto-italic.ttf",
+                "roboto-light.ttf", "roboto-LightItalic.ttf", "Roboto-Medium.ttf",
+                "Roboto-MediumItalic.ttf", "Roboto-Regular.ttf", "Roboto-Thin.ttf", "Roboto-ThinItalic.ttf"};
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +111,7 @@ public class MakeImageActivity extends AppCompatActivity {
         imgFont.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Typeface face = Typeface.createFromAsset(getAssets(), fontFamilyArray[++fontIndex]);
+                Typeface face = Typeface.createFromAsset(getAssets(), "fonts/" + fontFamilyArray[++fontIndex]);
                 tvQuote.setTypeface(face);
                 if (fontIndex == fontFamilyArray.length - 1) {
                     fontIndex = 0;
