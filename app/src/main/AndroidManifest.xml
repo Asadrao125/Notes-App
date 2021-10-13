@@ -15,7 +15,9 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.NotesApp">
-        <activity android:name=".activities.MakeImageActivity" />
+        <activity
+            android:name=".activities.MakeImageActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.ToDoActivity" />
         <activity android:name=".activities.ImageviewActivity" />
         <activity android:name=".activities.QuoteActivity" />
