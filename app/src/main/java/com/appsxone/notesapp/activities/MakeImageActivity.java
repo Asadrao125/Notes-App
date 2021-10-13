@@ -77,17 +77,20 @@ public class MakeImageActivity extends AppCompatActivity {
         shareLayout = findViewById(R.id.shareLayout);
 
         tvQuote.setText(quote);
-        imagesArray = new int[]{R.drawable.pic11, R.drawable.pic22, R.drawable.pic33, R.drawable.pic44, R.drawable.pic5,
-                R.drawable.pic6, R.drawable.pic7, R.drawable.pic8, R.drawable.pic9, R.drawable.pic10};
+        imagesArray = new int[]{
+                R.drawable.pic11, R.drawable.pic33, R.drawable.pic12, R.drawable.pic13,
+                R.drawable.pic5, R.drawable.pic6, R.drawable.pic7, R.drawable.pic8,
+                R.drawable.pic10, R.drawable.pic11};
 
-        colorsArray = new int[]{R.color.color11, R.color.color22, R.color.color33, R.color.color44, R.color.color55,
-                R.color.color66, R.color.color77, R.color.color88, R.color.color99, R.color.transparent};
+        colorsArray = new int[]{
+                R.color.color11, R.color.color22, R.color.color33, R.color.color44,
+                R.color.color55, R.color.color66, R.color.color77, R.color.color88,
+                R.color.color99, R.color.transparent};
 
-        fontFamilyArray = new String[]{"roboto_black.ttf", "roboto_blackitalic.ttf", "roboto_boldcondensed.ttf",
-                "roboto_bold.ttf", "roboto_boldcondensedItalic.ttf", "roboto-boldItalic.ttf",
-                "roboto-condensed.ttf", "roboto-condenseditalic.ttf", "roboto-italic.ttf",
-                "roboto-light.ttf", "roboto-LightItalic.ttf", "Roboto-Medium.ttf",
-                "Roboto-MediumItalic.ttf", "Roboto-Regular.ttf", "Roboto-Thin.ttf", "Roboto-ThinItalic.ttf"};
+        fontFamilyArray = new String[]{
+                "AltoneTrial-Regular.ttf", "Geliat-ExtraLight.otf",
+                "Sarahfadhilla-Free.ttf", "Head-Kick.ttf",
+                "Time-Stop.ttf", "Slant.otf"};
 
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
