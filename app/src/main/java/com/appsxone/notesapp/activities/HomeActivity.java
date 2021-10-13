@@ -18,12 +18,14 @@ import com.appsxone.notesapp.database.Database;
 import com.appsxone.notesapp.model.Categories;
 import com.appsxone.notesapp.model.Notes;
 import com.appsxone.notesapp.model.ToDoModel;
+import com.appsxone.notesapp.utils.Quotes;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
     public static int[] imagesArray;
     Database database;
+    ImageView imgSettings;
     TextView tvPosition;
     ViewFlipper viewFlipper;
     CardView cv1, cv2, cv3, cv4, cv5, cv6;
@@ -48,6 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         viewFlipper = findViewById(R.id.viewFlipper);
         tvPosition = findViewById(R.id.tvPosition);
         tvToDo = findViewById(R.id.tvToDo);
+        imgSettings = findViewById(R.id.imgSettings);
 
         imagesArray = new int[]{R.drawable.pic1, R.drawable.pic2, R.drawable.pic3, R.drawable.pic4};
 
@@ -70,6 +73,13 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ImageviewActivity.class);
                 intent.putExtra("index", viewFlipper.getDisplayedChild());
                 startActivity(intent);
+            }
+        });
+
+        imgSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }
         });
 
@@ -129,8 +139,10 @@ public class HomeActivity extends AppCompatActivity {
         cv5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /* Settings */
-                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                /* Make Image */
+                Intent intent = new Intent(getApplicationContext(), MakeImageActivity.class);
+                intent.putExtra("quote", Quotes.getRandomQuoteFromList());
+                startActivity(intent);
             }
         });
 

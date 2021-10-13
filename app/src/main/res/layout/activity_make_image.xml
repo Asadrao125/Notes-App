@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@id/imgAddQuote"
+                    android:layout_toStartOf="@id/imgSave"
                     android:layout_toLeftOf="@id/imgSave"
                     android:layout_toEndOf="@id/imgBack"
                     android:layout_toRightOf="@id/imgBack"
@@ -52,18 +52,6 @@
                     android:text="Quote"
                     android:textColor="@color/sky_blue"
                     android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/imgAddQuote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_toLeftOf="@id/imgSave"
-                    android:background="@drawable/ripple_effect"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_add_quote"
-                    app:tint="@color/sky_blue" />
 
                 <ImageView
                     android:id="@+id/imgSave"
@@ -97,7 +85,7 @@
                 <ImageView
                     android:id="@+id/image"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="400dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/pic11" />
 
@@ -105,7 +93,6 @@
                     android:id="@+id/tvQuote"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_centerInParent="true"
                     android:background="#66000000"
                     android:focusable="false"
                     android:fontFamily="sans-serif-condensed-medium"
@@ -126,27 +113,116 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:orientation="horizontal"
-        android:weightSum="2">
+        android:layout_margin="5dp"
+        android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btnBackground"
+        <LinearLayout
+            android:background="@drawable/border"
+            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="5dp"
-            android:layout_weight="1"
-            android:text="Image BG"
-            android:textSize="12sp" />
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-        <Button
-            android:id="@+id/btnTextBackground"
+            <ImageView
+                android:id="@+id/shareImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/share_image" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/sky_blue" />
+
+            <ImageView
+                android:id="@+id/share_text"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/share_text" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/featureLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Text BG"
-            android:textSize="12sp" />
+            android:background="@drawable/border"
+            android:orientation="horizontal"
+            android:weightSum="5">
+
+            <ImageView
+                android:id="@+id/imgAddImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/add_image" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/sky_blue" />
+
+            <ImageView
+                android:id="@+id/imgAddText"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/add_text" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/sky_blue" />
+
+            <ImageView
+                android:id="@+id/imgChangeImage"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/change_image" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/sky_blue" />
+
+            <ImageView
+                android:id="@+id/imgColorFilter"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/color_filter" />
+
+            <View
+                android:layout_width="1px"
+                android:layout_height="match_parent"
+                android:background="@color/sky_blue" />
+
+            <ImageView
+                android:id="@+id/imgFont"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/ripple_effect"
+                android:padding="10dp"
+                android:src="@drawable/ic_font" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

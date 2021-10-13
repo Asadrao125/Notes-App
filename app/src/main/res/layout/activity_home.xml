@@ -20,6 +20,18 @@
                 android:layout_height="170dp"
                 android:background="@color/sky_blue">
 
+                <ImageView
+                    android:id="@+id/imgSettings"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="15dp"
+                    android:padding="5dp"
+                    android:background="@drawable/ripple_effect"
+                    android:src="@drawable/settings"
+                    app:tint="@color/white" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -426,7 +438,7 @@
                                     android:layout_width="35dp"
                                     android:layout_height="35dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/settings"
+                                    android:src="@drawable/ic_make_image"
                                     app:tint="@color/white" />
 
                                 <TextView
@@ -434,7 +446,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_gravity="center"
                                     android:layout_marginTop="5dp"
-                                    android:text="Settings"
+                                    android:text="Make Image"
                                     android:textColor="@color/white" />
 
                             </LinearLayout>
