@@ -29,6 +29,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.appsxone.notesapp.BuildConfig;
 import com.appsxone.notesapp.R;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
@@ -54,6 +55,7 @@ public class MakeImageActivity extends AppCompatActivity {
     TextView tvQuote, tvTitle;
     RelativeLayout imageLayout;
     int imageIndex = 0, colorsIndex, fontIndex = 0;
+    ImageView shareText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +74,7 @@ public class MakeImageActivity extends AppCompatActivity {
         imgAddText = findViewById(R.id.imgAddText);
         imgAddImage = findViewById(R.id.imgAddImage);
         imgFont = findViewById(R.id.imgFont);
+        shareText = findViewById(R.id.shareText);
 
         tvQuote.setText(quote);
         imagesArray = new int[]{R.drawable.pic11, R.drawable.pic22, R.drawable.pic33, R.drawable.pic44, R.drawable.pic5,
@@ -167,6 +170,17 @@ public class MakeImageActivity extends AppCompatActivity {
                 Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
                 photoPickerIntent.setType("image/*");
                 startActivityForResult(photoPickerIntent, 123);
+            }
+        });
+
+        shareText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, tvQuote.getText().toString().trim());
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
             }
         });
     }

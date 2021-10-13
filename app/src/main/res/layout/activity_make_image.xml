@@ -122,24 +122,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:weightSum="2">
+            android:weightSum="1">
 
             <ImageView
-                android:id="@+id/shareImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:background="@drawable/ripple_effect"
-                android:padding="10dp"
-                android:src="@drawable/share_image" />
-
-            <View
-                android:layout_width="1px"
-                android:layout_height="match_parent"
-                android:background="@color/sky_blue" />
-
-            <ImageView
-                android:id="@+id/share_text"
+                android:id="@+id/shareText"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_weight="1"
