@@ -51,11 +51,11 @@ public class MakeImageActivity extends AppCompatActivity {
     String quote;
     int[] imagesArray, colorsArray;
     String[] fontFamilyArray;
-    ImageView image, imgBack, imgSave, imgChangeImage, imgColorFilter, imgAddText, imgAddImage, imgFont;
+    ImageView image, imgBack, imgChangeImage, imgColorFilter, imgAddText, imgAddImage, imgFont;
     TextView tvQuote, tvTitle;
     RelativeLayout imageLayout;
     int imageIndex = 0, colorsIndex, fontIndex = 0;
-    ImageView shareText;
+    RelativeLayout shareLayout, saveLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,14 +67,14 @@ public class MakeImageActivity extends AppCompatActivity {
         imgBack = findViewById(R.id.imgBack);
         tvQuote = findViewById(R.id.tvQuote);
         tvTitle = findViewById(R.id.tvTitle);
-        imgSave = findViewById(R.id.imgSave);
+        saveLayout = findViewById(R.id.saveLayout);
         imageLayout = findViewById(R.id.imageLayout);
         imgChangeImage = findViewById(R.id.imgChangeImage);
         imgColorFilter = findViewById(R.id.imgColorFilter);
         imgAddText = findViewById(R.id.imgAddText);
         imgAddImage = findViewById(R.id.imgAddImage);
         imgFont = findViewById(R.id.imgFont);
-        shareText = findViewById(R.id.shareText);
+        shareLayout = findViewById(R.id.shareLayout);
 
         tvQuote.setText(quote);
         imagesArray = new int[]{R.drawable.pic11, R.drawable.pic22, R.drawable.pic33, R.drawable.pic44, R.drawable.pic5,
@@ -150,7 +150,7 @@ public class MakeImageActivity extends AppCompatActivity {
             }
         });
 
-        imgSave.setOnClickListener(new View.OnClickListener() {
+        saveLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 checkPermission();
@@ -173,7 +173,7 @@ public class MakeImageActivity extends AppCompatActivity {
             }
         });
 
-        shareText.setOnClickListener(new View.OnClickListener() {
+        shareLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent sendIntent = new Intent();

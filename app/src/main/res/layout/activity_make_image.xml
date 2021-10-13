@@ -41,8 +41,6 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="10dp"
-                    android:layout_toStartOf="@id/imgSave"
-                    android:layout_toLeftOf="@id/imgSave"
                     android:layout_toEndOf="@id/imgBack"
                     android:layout_toRightOf="@id/imgBack"
                     android:ellipsize="end"
@@ -52,19 +50,6 @@
                     android:text="Quote"
                     android:textColor="@color/sky_blue"
                     android:textSize="18sp" />
-
-                <ImageView
-                    android:id="@+id/imgSave"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginRight="10dp"
-                    android:background="@drawable/ripple_effect"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_save"
-                    app:tint="@color/sky_blue" />
 
             </RelativeLayout>
 
@@ -97,6 +82,7 @@
                     android:focusable="false"
                     android:fontFamily="sans-serif-condensed-medium"
                     android:gravity="center"
+                    android:lineHeight="30dp"
                     android:padding="10dp"
                     android:text="Qoute text will be display here"
                     android:textColor="@color/white"
@@ -117,21 +103,87 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:background="@drawable/border"
-            android:layout_marginBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:orientation="horizontal"
-            android:weightSum="1">
+            android:weightSum="2">
 
-            <ImageView
-                android:id="@+id/shareText"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+            <RelativeLayout
+                android:id="@+id/shareLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:background="@drawable/ripple_effect"
-                android:padding="10dp"
-                android:src="@drawable/share_text" />
+                android:background="@drawable/border">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_effect">
+
+                    <ImageView
+                        android:id="@+id/shareText"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:src="@drawable/share_text" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/shareText"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:padding="10dp"
+                        android:text="Share Quote"
+                        android:textColor="@color/sky_blue"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/saveLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/border">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ripple_effect">
+
+                    <ImageView
+                        android:id="@+id/saveText"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_centerVertical="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_save"
+                        app:tint="@color/sky_blue" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/saveText"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:minLines="1"
+                        android:padding="10dp"
+                        android:text="Save &amp; Share"
+                        android:textColor="@color/sky_blue"
+                        android:textSize="16sp" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -145,8 +197,8 @@
 
             <ImageView
                 android:id="@+id/imgAddImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_effect"
                 android:padding="10dp"
@@ -159,8 +211,8 @@
 
             <ImageView
                 android:id="@+id/imgAddText"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_effect"
                 android:padding="10dp"
@@ -173,8 +225,8 @@
 
             <ImageView
                 android:id="@+id/imgChangeImage"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_effect"
                 android:padding="10dp"
@@ -187,8 +239,8 @@
 
             <ImageView
                 android:id="@+id/imgColorFilter"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_effect"
                 android:padding="10dp"
@@ -201,8 +253,8 @@
 
             <ImageView
                 android:id="@+id/imgFont"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
                 android:background="@drawable/ripple_effect"
                 android:padding="10dp"
