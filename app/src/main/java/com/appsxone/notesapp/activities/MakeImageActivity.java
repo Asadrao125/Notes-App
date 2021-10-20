@@ -49,13 +49,13 @@ import java.util.Random;
 
 public class MakeImageActivity extends AppCompatActivity {
     String quote;
-    int[] imagesArray, colorsArray;
     String[] fontFamilyArray;
-    ImageView image, imgBack, imgChangeImage, imgColorFilter, imgAddText, imgAddImage, imgFont;
     TextView tvQuote, tvTitle;
     RelativeLayout imageLayout;
-    int imageIndex = 0, colorsIndex, fontIndex = 0;
+    int[] imagesArray, colorsArray;
     RelativeLayout shareLayout, saveLayout;
+    int imageIndex = 0, colorsIndex, fontIndex = 0;
+    ImageView image, imgBack, imgChangeImage, imgColorFilter, imgAddText, imgAddImage, imgFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

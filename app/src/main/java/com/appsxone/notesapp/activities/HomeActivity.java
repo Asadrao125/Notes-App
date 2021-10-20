@@ -23,11 +23,11 @@ import com.appsxone.notesapp.utils.Quotes;
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
-    public static int[] imagesArray;
     Database database;
-    ImageView imgSettings;
     TextView tvPosition;
+    ImageView imgSettings;
     ViewFlipper viewFlipper;
+    public static int[] imagesArray;
     CardView cv1, cv2, cv3, cv4, cv5, cv6;
     TextView tvCategories, tvNotes, tvVersionName, tvToDo;
 
