@@ -204,10 +204,8 @@ public class MakeImageActivity extends AppCompatActivity {
         ImageView imgClose = dialogView.findViewById(R.id.imgClose);
         EditText edtQuote = dialogView.findViewById(R.id.edtQuote);
         Button btnAdd = dialogView.findViewById(R.id.btnAdd);
-        TextView tvClear = dialogView.findViewById(R.id.tvClear);
 
         edtQuote.setText(quote);
-        tvClear.setText("");
 
         imgClose.setOnClickListener(new View.OnClickListener() {
             @Override

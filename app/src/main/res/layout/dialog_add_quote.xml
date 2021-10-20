@@ -55,21 +55,12 @@
                 android:id="@+id/edtQuote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="start"
                 android:hint="Enter quote"
-                android:inputType="textCapSentences" />
+                android:maxLines="3"
+                android:minLines="3" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/tvClear"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/ripple_effect"
-            android:padding="5dp"
-            android:text="Clear"
-            android:textColor="@color/black" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvBtnSearch"
