@@ -120,7 +120,6 @@ public class ToDoActivity extends AppCompatActivity {
                 }
             }
         });
-
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }

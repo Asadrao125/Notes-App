@@ -136,7 +136,6 @@ public class NotesActivity extends AppCompatActivity {
                 }
             }
         });
-
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }

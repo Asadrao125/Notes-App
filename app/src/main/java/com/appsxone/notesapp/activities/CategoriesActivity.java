@@ -338,7 +338,6 @@ public class CategoriesActivity extends AppCompatActivity {
                 }
             }
         });
-
         alertDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         alertDialog.show();
     }
